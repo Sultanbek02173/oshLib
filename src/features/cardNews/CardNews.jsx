@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./CardNews.scss";
+import "./cardNews.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
