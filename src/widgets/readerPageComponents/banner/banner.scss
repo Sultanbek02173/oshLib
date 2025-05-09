@@ -1,0 +1,126 @@
+
+.banner_row {
+    display: flex;
+    min-height: 590px;
+    background-color: #105B60;
+    border-radius: 37px;
+    align-items: center;
+
+    .banner_text {
+        width: 50%;
+        color: #fff;
+        padding: 150px 25px 100px 45px;
+
+        &_title {
+            font-family: "Kino";
+            font-weight: 400;
+            font-size: 46px;
+            margin-bottom: 16px;
+        }
+
+        p{
+            width: 100%;
+        }
+
+        &_btn {
+            font-family: SF Pro Display;
+            font-weight: 400;
+            font-size: 18px;
+            color: #105B60;
+            background: #fff;
+            padding: 11px 24px;
+            border-radius: 37px;
+            border: none;
+            margin-top: 24px;
+
+        }
+    }
+
+    .banner_img {
+        width: 50%;
+        max-height: 617px;
+        height: 100%;
+        border-top-left-radius: 380px;
+        border-top-right-radius: 37px;
+        border-bottom-right-radius: 37px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            min-width: 100%;
+            min-height: 100%;
+            max-width: none;
+            max-height: none;
+            width: auto;
+            height: auto;
+            object-fit: fill;
+            display: block;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .banner_row{
+
+            height: 403px;
+    
+        .banner_text{
+            width: 600px;
+           
+        }
+     
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .banner_row{
+        min-height: 440px;
+
+
+        .banner_text_title{
+        font-size: 35px;
+    }
+
+    .banner_text_description{
+        font-size: 15px;
+    }
+    .banner_img{
+        width: 60%;
+    }
+    .banner_text_btn{
+        font-size: 13px;
+    }
+ }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .banner_row{
+        background-image: url('https://s3-alpha-sig.figma.com/img/02ce/2bb1/6166f207c7c31b5bdd746a128d5c665b?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=GQXzXdNPXdftOdlKw3tzd8C6X5VgZgdrMRqyHjV3tTOstRn1Wr7aF2w8014FIoYczC~j7Y6L79GY5yVX3no~RTzRJhplVzSdAv6tBeRzZL9~mOYkpIQGDl0NixcgOY-wXQcKuawbiGHR7Oi-gR4Pjmw~iI2VLL8~1u0DmIcEjgm7L8FFytvqUYyXLfQI8uBbUD26zk1pj2o1A7AHAK6sfL~JEXuQTOycCx1ciqjCrgbmQA3j6ZX3ejKB51yWL67zyu33rEUEBDNwN9WbM2xcn-HIhJ6uCfEuC6QTrlQXSxRKwIfe-ZCCzRO6uImYjpEpNK-eico6vsgLldA-WrUzpg__');
+        .banner_img{
+         display: none;
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 435px) {
+     .banner_row{
+        min-height: 550px;
+
+        .banner_text_title{
+            font-size: 33px;
+        }
+        .banner_text_btn{
+            display: none;
+        }
+     }
+}

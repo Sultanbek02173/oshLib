@@ -1,0 +1,186 @@
+.cardAdvertisment {
+  width: 100%;
+  
+    &__title {
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      text-align: left;
+      font-family: "kino";
+      color: #005f5f;
+    }
+  
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+  
+    &__card {
+      display: flex;
+      gap: 16px;
+      background: #005f5f;
+      color: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      // flex-wrap: wrap;
+      width: 100%;
+
+      &__innerContent{
+        display: flex;
+        width: 95%;
+        gap: 30px;
+      }
+  
+      // &:hover {
+      //   transform: translateY(-5px);
+      //   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      // }
+  
+      // @media (max-width: 768px) {
+      //   flex-direction: column;
+      //   align-items: center;
+      // }
+    }
+  
+    &__image {
+      width: 180px;
+      height: 184px;
+      object-fit: cover;
+      border-radius: 8px;
+  
+      // @media (max-width: 768px) {
+      //   width: 100%;
+      //   max-width: 250px;  
+      //   height: auto;
+      //   margin-bottom: 16px;
+      // }
+    }
+  
+    &__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      max-width: 65%;
+  
+      // @media (max-width: 768px) {
+      //   text-align: center;
+      // }
+    }
+  
+    &__date {
+      font-family: "SF pro display";
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  
+    &__card-title {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: "kino";
+      margin-bottom: 15px;
+    }
+  
+    &__description {
+      font-size: 16px;
+      font-family: "Inter";
+      font-weight: 400;
+      line-height: 1.5;
+      width: 100%;
+    }
+  
+    &__button {
+      background: white;
+      color: #005f5f;
+      font-family: "SF pro display";
+      font-size: 14px;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: auto;
+      align-self: flex-start;
+  
+      // &:hover {
+      //   background: #e0f2f1;
+      // }
+  
+      // @media (max-width: 768px) {
+      //   align-self: center;
+      // }
+    }
+  
+    @media (max-width: 1024px) {
+      width: 100%;
+      padding: 16px;
+    }
+  
+    @media (max-width: 768px) {
+      .cardAdvertisment__title {
+        font-size: 28px;
+        text-align: center;
+      }
+  
+      .cardAdvertisment__list {
+        gap: 16px;
+      }
+  
+      .cardAdvertisment__card {
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+      }
+  
+      .cardAdvertisment__image {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 16px;
+      }
+  
+      .cardAdvertisment__content {
+        text-align: center;
+      }
+  
+      .cardAdvertisment__button {
+        align-self: center;
+        width: 100%;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .cardAdvertisment__title {
+        font-size: 24px;
+      }
+  
+      .cardAdvertisment__card {
+        gap: 12px;
+        padding: 12px;
+      }
+  
+      .cardAdvertisment__date {
+        font-size: 12px;
+      }
+  
+      .cardAdvertisment__card-title {
+        font-size: 18px;
+      }
+  
+      .cardAdvertisment__description {
+        font-size: 14px;
+      }
+  
+      .cardAdvertisment__button {
+        padding: 6px 12px;
+      }
+    }
+  }
+  
+  @media (max-width: 1024px) {
+   .cardAdvertisment__card .cardAdvertisment__content .cardAdvertisment__description{
+    font-size: 14px;
+   }
+  }

@@ -1,0 +1,83 @@
+.grap {
+    padding-top: 70px;
+
+    &-title {
+        text-transform: uppercase;
+        font-size: 36px;
+        font-family: "Kino";
+        font-weight: 400;
+        // font-size: clamp(18px, 1.5vw, 35px);
+        color: #105B60;
+        margin-bottom: 47px;
+    }
+
+    &-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #105B60;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        margin-bottom: 150px;
+
+        &_head {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: "Kino";
+            text-align: left;
+            padding: 26px 40px;
+            background-color: #105B60;
+            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 18px;
+
+            border-bottom: 1px solid #105B60;
+
+            &:not(:last-child) {
+                border-right: 1px solid #105B60;
+            }
+        }
+
+        tr {
+            border: 1px solid #105B60;
+        }
+
+        &_td {
+            font-style: italic;
+
+            text-align: left;
+            padding: 23px 40px;
+            background-color: #FFFFFF;
+            color: #105B60;
+            font-family: "SF Pro Display";
+            font-weight: 700;
+            font-size: clamp(14px, 1.5vw, 18px);
+            border-bottom: 1px solid #105B60;
+
+            &:not(:last-child) {
+                border-right: 1px solid #105B60;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        padding-top: 40px;
+
+        &-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        &-table {
+            &_head {
+                padding: 15px 10px;
+                font-size: 14px;
+            }
+
+            &_td {
+                padding: 15px 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}

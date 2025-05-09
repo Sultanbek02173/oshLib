@@ -1,0 +1,171 @@
+.card-afisha {
+
+
+  &__title {
+    font-family: "Kino", sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    text-align: left;
+    color: #005f5f;
+    margin-top: 140px;
+    margin-bottom: 50px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__card {
+    display: flex;
+    gap: 30px;
+    background: #005f5f;
+    color: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    // @media (max-width: 768px) {
+    //   flex-direction: column;
+    //   align-items: center;
+    // }
+  }
+
+  &__image {
+    width: 10px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+
+    // @media (max-width: 768px) {
+    //   width: 100%;
+    //   max-width: 250px;  
+    //   height: auto;
+    //   margin-bottom: 16px;
+    // }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    // @media (max-width: 768px) {
+    //   text-align: center;
+    // }
+  }
+
+  &__date {
+    font-family: "SF Pro Display", sans-serif;
+font-weight: 400;
+font-size: 18px;
+line-height: 100%;
+letter-spacing: 0%;
+
+  }
+
+  &__card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__button {
+   
+    background: white;
+    color: #005f5f;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: flex-start;
+
+    &:hover {
+      background: #e0f2f1;
+    }
+
+    // @media (max-width: 768px) {
+    //   align-self: center;
+    // }
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .card-afisha__title {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .card-afisha__list {
+      gap: 16px;
+    }
+
+    .card-afisha__card {
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .card-afisha__image {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 16px;
+    }
+
+    .card-afisha__content {
+      text-align: center;
+    }
+
+    .card-afisha__button {
+      align-self: center;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-afisha__title {
+      font-size: 24px;
+    }
+
+    .card-afisha__card {
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .card-afisha__date {
+      font-size: 12px;
+    }
+
+    .card-afisha__card-title {
+      font-size: 18px;
+    }
+
+    .card-afisha__description {
+      font-size: 14px;
+    }
+
+    .card-afisha__button {
+      padding: 6px 12px;
+    }
+  }
+}

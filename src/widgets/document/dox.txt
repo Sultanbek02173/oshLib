@@ -1,0 +1,13 @@
+widgets (виджеты) — композиционный слой для соединения сущностей и фич в самостоятельные блоки (например, IssuesList, UserProfile).
+
+
+  homeSections - Главная страница
+  afishaSections - Страница Афиша мероприятие
+  servicesSections - Страница Услуги
+  projectSections - Страница Наши Проекты 
+  newsSections - Страница Новости
+  catalogSections - Страница Каталог
+  readerSections - Страница Читателям
+  aboutSections - Страница О библиотеки
+  supportSections - Страница Поддержать библиотеку
+  electronicSections - Страница Элекронная Биоблетека

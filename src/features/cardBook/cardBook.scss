@@ -1,0 +1,183 @@
+.cardBook {
+  width: 100%;
+  height: auto;
+  background-color: #105b60;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 22px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &_img {
+    width: 114px;
+    max-height: 180px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &_text {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 20px;
+    justify-content: space-around;
+
+    span {
+      font-family: Kino;
+    }
+
+    &_name {
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 18px;
+      text-transform: uppercase;
+
+      color: #fff;
+    }
+
+    &_author {
+      font-family: SF Pro Display;
+      font-weight: 500;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    &_description {
+      color: #fff;
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 18px;
+      vertical-align: bottom;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+    }
+  }
+
+  &_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-right: 33px;
+
+    &_read,
+    &_download {
+      padding: 8px 39px;
+      border-radius: 30px;
+      white-space: nowrap;
+      margin: 10px 0;
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    &_read {
+      background-color: transparent;
+      border: 2px solid #ffffff;
+      color: white;
+    }
+
+    &_download {
+      background-color: #ffffff;
+      border: 2px solid #105b60;
+      color: #105b60;
+    }
+  }
+}
+
+.desktop_view {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile_view {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .cardBook {
+    flex-direction: column;
+    padding: 15px;
+
+    .desktop_view {
+      display: none;
+    }
+
+    .mobile_view {
+      display: block;
+    }
+
+    &_text {
+      margin: 0 10px;
+      height: 150px;
+      justify-content: space-between;
+    }
+
+    &_top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &_img {
+      max-width: 120px;
+      width: 35%;
+
+      img {
+        max-height: 160px;
+        width: 100%;
+      }
+    }
+
+    &_text_description {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+
+    &_btn {
+      clear: both;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 20px;
+      margin-top: 15px;
+
+      &_read,
+      &_download {
+        width: 45%;
+        padding: 8px 15px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .cardBook {
+    &_img {
+      max-width: 120px;
+      width: 40%;
+
+      img {
+        max-height: 160px;
+        width: 100%;
+      }
+    }
+
+    &_text {
+      &_name {
+        font-size: 14px;
+      }
+    }
+  }
+}

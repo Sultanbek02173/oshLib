@@ -1,0 +1,192 @@
+.management-container{
+    color: #105B60;
+    margin-top: 50px;
+
+    &-title{
+        font-family: Kino;
+    }
+    &-cards{
+        display: flex;
+        gap: 30px;
+        margin-top: 2%;
+
+        &-card{
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+
+
+            &-img{
+                border: 12px solid #005f5f;
+                border-radius: 8px;
+                width: 100%;
+                height: 65%;
+                object-fit: cover;
+
+            }
+        }
+        h3{
+            margin-top: 10px;
+            font-family: Inter;
+        }
+        p{
+            margin-top: 10px;
+            font-family: Inter;
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (max-width: 1200px) {
+    .management-title{
+        font-size: 18px;
+    }
+    .management-description{
+        font-size: 14px;
+    }
+    .management-container-cards{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 992px) {
+    .management-container{
+        margin-top: 200px;
+    }
+    .management-container-cards{
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+    .management-title{
+        font-size: 30px;
+    }
+    .management-description{
+        font-size: 24px;
+    }
+    .management-container-cards-card{
+        width: 48%;
+    }
+    .management-container-cards-card-img{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .management-container{
+        margin-top: 150px;
+    }
+    .management-container-cards{
+        gap: 30px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .management-title{
+        font-size: 30px;
+    }
+    .management-container-cards-card{
+        width: 47%;
+    }
+    .management-container-cards-card-img{
+        width: 100%;
+        border: 8px solid #005f5f;
+
+    }
+    .management-title{
+        font-size: 22px;
+    }
+    .management-description{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .management-container{
+        margin-top: 100px;
+    }
+    .management-container-cards{
+        gap: 20px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .management-container-title{
+        font-size: 30px;
+    }
+    .management-title{
+        font-size: 20px;
+    }
+    .management-description{
+        font-size: 15px;
+    }
+    .management-container-cards-card{
+        width: 47.5%;
+    }
+    .management-container-cards-card-img{
+        width: 100%;
+        height: 58%;
+        border: 6px solid #005f5f;
+
+    }
+}
+@media screen and (max-width: 425px) {
+    .management-container-cards-card-img{
+        width: 120%;
+        height: 57%;
+    }
+    .management-container-cards{
+        gap: 47px;
+    }
+    .management-container-cards-card{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 375px) {
+    .management-container{
+        margin-top: 80px;
+    }
+    .management-container-cards{
+        gap: 40px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .management-container-title{
+        font-size: 30px;
+    }
+    .management-title{
+        font-size: 16px;
+    }
+    .management-description{
+        font-size: 11px;
+    }
+    .management-container-cards-card{
+        width: 40%;
+    }
+    .management-container-cards-card-img{
+        width: 122%;
+        border: 4px solid #005f5f;
+
+    }
+}
+@media screen and (max-width: 320px) {
+    .management-container{
+        margin-top: 80px;
+    }
+    .management-container-cards{
+        gap: 33px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .management-container-title{
+        font-size: 30px;
+    }
+    .management-title{
+        font-size: 11px;
+    }
+    .management-description{
+        font-size: 7px;
+    }
+    .management-container-cards-card{
+        width: 40%;
+        height: 80%;
+    }
+    .management-container-cards-card-img{
+        width: 122%;
+        height: 140px;
+    }
+}

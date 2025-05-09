@@ -1,0 +1,86 @@
+.NewsBooksUpdate {
+  &_list {
+    display: flex;
+    padding: 120px 0px;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &_header {
+    font-family: "Kino";
+    color: #105b60;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }
+  &_card {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background-color: #105b60;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+  }
+  &_img {
+    width: 110px;
+    height: 170px;
+  }
+  &_info {
+    display: flex;
+    width: 65%;
+    align-items: center;
+    &-textBlock {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      &_info {
+        font-family: "Kino";
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #ffffff;
+      }
+      &_author {
+        font-family: "SF Pro Display";
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: white;
+      }
+      &_description {
+        font-family: "SF Pro Display";
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: bottom;
+        color: #ffffff;
+      }
+    }
+  }
+  &_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    gap: 20px;
+  }
+  &_read {
+    background-color: #105b60;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    padding: 10px 40px;
+    color: white;
+  }
+  &_download {
+    background-color: #ffffff;
+    border: 2px solid #105b60;
+    border-radius: 30px;
+    padding: 10px 40px;
+    color: #105b60;
+  }
+}

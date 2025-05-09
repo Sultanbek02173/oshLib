@@ -1,0 +1,336 @@
+.catalog{
+    display: flex;
+    justify-content: space-between;  
+
+    &-text1{
+        font-family: Kino;
+        font-weight: 400;
+        color: #105B60;
+        font-size: 42px;
+
+    }
+    
+    &-box{
+        width: 99%;    
+        height: 400px;
+        background-color: #105B60;
+        border-radius: 20px;
+        padding: 30px ;
+        margin-top: 20px;
+
+    }
+   
+    &-img1{
+        width: 100%;
+        height: 260px;
+       
+    }
+    &-text3{
+        font-family: Kino;
+        font-weight: 400;
+        width: 161px;
+        height: 24px;
+        color: #FFFFFF;
+    }
+    &-text4{
+        font-family: SF Pro Display;
+        font-weight: 400;
+        width: 385px;
+        height: 71px;
+        color: #FFFFFF;
+        margin-top: 10px;
+
+    }
+       
+    &-cont1{
+        display: flex;
+        align-items: center;
+         .catalog-btn{
+            width: 140px;
+            height: 45px;
+            border-radius: 50px;
+            background-color: #FFFFFF;
+            border: none;
+            color: #105B60;
+    
+            &:hover {
+                background: #00a6a6;
+                color: #fff;
+            }
+        }
+    }
+
+    &-box2{
+        width: 99%;
+        height: 400px;
+        background-color: #105B60;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 20px;
+    
+    }
+
+    &-text2{
+        font-family: Kino;
+        font-weight: 400;
+        color: #105B60;
+        font-size: 42px;
+
+    }
+        
+    
+    &-img2{
+     
+        width: 100%;
+        height: 260px;
+    }
+
+    &-cont3{
+        display: flex;
+        align-items: center;
+         .catalog-btn2{
+            width: 140px;
+            height: 45px;
+            border-radius: 50px;
+            background-color: #FFFFFF;
+            border: none;
+            color: #105B60;
+    
+            &:hover {
+                background: #00a6a6;
+                color: #fff;
+            }
+        }
+    }
+
+   
+    &-text5{
+        font-family: Kino;
+        font-weight: 400;
+        height: 24px;
+        color: #FFFFFF;
+    
+    }
+    &-text6{
+        font-family: SF Pro Display;
+        font-weight: 400;
+        width: 365px;
+        height: 71px;
+        color: #FFFFFF;
+        margin-top: 10px;
+}  
+}  
+
+
+
+@media screen and (max-width: 1200px) {
+    
+
+    .catalog-box{
+        width: 475px; 
+        height: 350px;
+        padding: 20px;
+        
+        .catalog-img1{
+           width: 100%; 
+           height: 210px; 
+        }
+
+       .catalog-text3{
+        font-size: 23px;
+        margin-top: 7px;
+       }
+
+       
+       .catalog-text4{
+         font-size: 16px;
+         margin-top: 5px;
+         width: 310px;
+       }
+
+       .catalog-btn{
+           width: 120px;
+           margin-left: 20px;
+           height: 40px;
+           padding: 10px;
+       }
+    }
+
+    .catalog-box2{
+        width: 475px; 
+        height: 350px;
+        padding: 20px;
+
+        
+        .catalog-img2{
+           width: 100%; 
+           height: 210px; 
+        }
+
+       .catalog-text5{
+        font-size: 23px;
+        margin-top: 7px;
+       }
+
+       .catalog-text6{
+         font-size: 16px;
+         margin-top: 8px;
+         width: 290px;
+       }
+
+       .catalog-btn2{
+           width: 120px;
+           height: 40px;
+           margin-top: 0;
+           padding: 10px;
+
+       }
+
+    }
+
+    
+}
+
+@media screen and (max-width: 992px) {
+    .catalog{
+        flex-direction: column;
+        margin-top: 70px;
+
+        .catalog-box{
+            width: 100%;
+            height: 410px;
+            padding: 20px;
+
+            .catalog-img1{
+                width: 100%;
+                height: 300px;
+            }
+            .catalog-text4{
+                width: 80%;
+            }
+            
+        }
+
+        .catalog-box2{
+            width: 100%;
+            height: 410px;
+            padding: 20px;
+            margin-left: 0;
+
+
+            .catalog-img2{
+                width: 100%;
+                height: 300px;
+            }
+            .catalog-text6{
+                width: 80%;
+            }
+        }
+        .catalog-text2{
+           margin-top: 50px;
+
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .catalog{
+
+        .catalog-box{
+           height: 425px;    
+            .catalog-img1{
+                width: 100%;   
+            }
+        }
+
+        .catalog-box2{
+           height: 425px;    
+
+            .catalog-img2{
+                width: 100%;
+                height: 300px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 495px) {
+   .catalog{
+
+    .catalog-text1{
+        font-size: 40px;
+    }
+    .catalog-text2{
+        font-size: 40px;
+    }
+
+    .catalog-box{
+        height: 400px;
+
+        .catalog-img1{
+            height: 250px;
+        }
+        .catalog-text4{
+            font-size: 15px;
+        }
+    }
+    .catalog-box2{
+        height: 400px;
+
+        .catalog-img2{
+            height: 250px;
+        }
+        .catalog-text6{
+            font-size: 15px;
+        }
+    }
+   }
+}
+
+@media screen and (max-width: 410px) {
+    .catalog{
+
+        .catalog-box{
+            height: 365px;
+            .catalog-img1{
+                height: 200px;
+            }
+            
+        }
+
+        .catalog-box2{
+            height: 365px;
+            .catalog-img2{
+                height: 200px;
+            }
+            .catalog-text5{
+                font-size: 20px;
+            }
+            
+        }
+       }
+}
+
+@media screen and (max-width: 360px) {
+      .catalog{
+
+        .catalog-box{
+            .catalog-text3{
+                font-size: 20px;
+            }
+            .catalog-text4{
+                font-size: 13px;
+            }
+        }
+
+        .catalog-box2{
+            
+            .catalog-text5{
+                font-size: 15px;
+            }
+            .catalog-text6{
+                font-size: 13px;
+            }
+        }
+      }
+}

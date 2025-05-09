@@ -1,0 +1,69 @@
+.electronic_banner {
+  display: flex;
+  gap: 10px;
+  font-size: 10px;
+
+  .rectangle__electronic {
+    width: 100%;
+    height: auto;
+    margin-top: 60px;
+    border-radius: 40px;
+    background-color: #105B60;
+    position: relative;
+
+
+    &-title {
+      color: #FFFFFF;
+      font-size: 40px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding: 175px 90px;
+      align-items: center;
+    }
+
+    .ellipseA {
+      width: 144px;
+      border-radius: 100%;
+      position: absolute;
+      bottom: -40px;
+      left: 27%;
+    }
+
+    .ellipseB {
+      width: 115px;
+      border-radius: 100%;
+      position: absolute;
+      top: 60px;
+      right: 15%;
+    }
+
+    .ellipseC {
+      width: 115px;
+      border-radius: 100%;
+      position: absolute;
+      top: 40px;
+      left: 15%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .rectangle__electronic-title {
+      font-size: 35px;
+    }
+
+    .ellipseA {
+      width: 105px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rectangle__electronic-title {
+      font-size: 30px;
+    }
+
+    .ellipseA {
+      width: 105px;
+    }
+  }
+}

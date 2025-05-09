@@ -1,0 +1,17 @@
+
+
+.cardAdvertisment {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+      &__title {
+        font-size: 36px;
+        font-weight: 400;
+        margin-bottom: 24px;
+        text-align: left;
+        font-family: "kino";
+        color: #005f5f;
+      }
+
+    }

@@ -1,0 +1,213 @@
+.register {
+  position: relative;
+  padding: 130px 0;
+  &::after {
+    content: "";
+    display: block;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #105b60;
+    height: 100%;
+  }
+  &__first {
+    padding-top: 100px;
+    &-title {
+      font-family: Kino;
+      font-weight: 400;
+      font-size: 66px;
+      line-height: 86px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #105b60;
+    }
+    &-subtitle {
+      margin-top: 16px;
+      font-family: SF Pro Display;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #999ba1;
+    }
+  }
+  &__form {
+    margin-top: 64px;
+    &-error {
+      color: red;
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      margin-bottom: 8px;
+    }
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 15px;
+      div {
+        width: 50%;
+      }
+    }
+    &-input {
+      width: 100%;
+      margin-bottom: 32px;
+      outline: none;
+      padding: 19px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #eaebec;
+    }
+    &-label {
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      margin-bottom: 8px;
+    }
+    &-confirm {
+      display: flex;
+      column-gap: 12px;
+      align-items: center;
+      p {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 25px;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+    }
+    &-submit {
+      margin-top: 20px;
+      width: 100%;
+      font-family: SF Pro Display;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 18px 0;
+      background-color: #105b60;
+    }
+  }
+  &__second {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  &__info {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    &-image {
+      width: 100%;
+    }
+    &-title {
+      margin-top: 95px;
+      margin-bottom: 50px;
+      font-family: Kino;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: end;
+      vertical-align: middle;
+      // color: #fff;
+    }
+    &-subtitle {
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: start;
+      vertical-align: middle;
+    }
+    &-description {
+      font-family: SF Pro Display;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      max-width: 98%;
+      margin: 23px auto;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .register {
+    .col-6 {
+      width: 100%;
+    }
+    &::after {
+      // display: none;
+      content: none;
+    }
+    &__second {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+  .register {
+    &__first {
+      &-title {
+        font-family: Kino;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+      }
+      &-subtitle {
+        font-size: 15px;
+        line-height: normal;
+      }
+    }
+    &__form {
+      &-row {
+        flex-direction: column;
+        div {
+          width: 100%;
+        }
+      }
+      &-label {
+        line-height: normal;
+      }
+      &-submit {
+        font-size: 20px;
+        font-weight: 300;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+    max-width: 100%;
+  }
+}

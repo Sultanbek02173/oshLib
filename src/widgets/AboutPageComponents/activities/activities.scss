@@ -1,0 +1,148 @@
+.activities-container {
+    margin-top: 100px;
+
+    &-title {
+        color: #105B60;
+        font-family: Kino;
+    }
+
+    &-cards {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 200px;
+
+        &-card {
+            background-color: #105B60;
+            border-radius: 10px;
+            width: 23.9%;
+            min-width: 250px;
+            padding: 25px;
+            color: white;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &-description {
+                font-family: Montserrat;
+                font-size: 18px;
+            }
+
+            &-button {
+                margin-top: auto;
+                margin-bottom: 10px;
+                background-color: white;
+                font-family: SF Pro Display;
+                color: #105B60;
+                text-align: center;
+                border-radius: 37.5px;
+                width: 100%;
+                padding: 12px 15px;
+                border: none;
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: 1200px) {
+//     .activities-container-cards-card-description {
+//         font-size: 14px;
+//     }
+
+//     .activities-container-cards-card-title {
+//         font-size: 20px;
+//     }
+
+//     .activities-container-cards {
+//         width: 100%;
+//     }
+
+
+// }
+
+// @media screen and (max-width: 992px) {
+//     .activities-container-cards-card-description {
+//         font-size: 20px;
+//     }
+
+//     .activities-container {
+//         margin-top: 180px;
+//     }
+
+//     .activities-container-cards {
+//         width: 101%;
+//         flex-wrap: wrap;
+//     }
+
+//     .activities-container-cards-card {
+//         width: 48.5%;
+//     }
+
+//     .third-descritption {
+//         margin-top: 17%;
+//     }
+
+//     .activities-container-cards-card-button {}
+// }
+
+// @media screen and (max-width: 768px) {
+//     .activities-container-cards-card-description {
+//         font-size: 18px;
+//         margin-top: 5%;
+//         height: 80%;
+//     }
+
+//     .activities-container-cards-card-button {
+//         margin-top: 8%;
+//     }
+
+//     .activities-container {
+//         margin-top: 180px;
+//     }
+
+//     .activities-container-cards {
+//         width: 100%;
+//         flex-wrap: wrap;
+//     }
+
+//     .activities-container-cards-card {
+//         width: 48.15%;
+//     }
+
+//     .third-descritption {
+//     }
+// }
+
+@media screen and (max-width: 576px) {
+    .activities-container-cards-card-description {
+        font-size: 24px;
+        margin-top: 5%;
+        height: 65%;
+    }
+
+    .activities-container-title {
+        font-size: 30px;
+    }
+
+
+
+    .activities-container-cards-card {
+        padding: 40px;
+    }
+
+    .activities-container {
+        margin-top: 100px;
+    }
+
+    .activities-container-cards {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .activities-container-cards-card {
+        width: 100%;
+    }
+}

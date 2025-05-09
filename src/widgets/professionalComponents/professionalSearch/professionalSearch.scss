@@ -1,0 +1,52 @@
+.searchh {
+    background-color: #105B60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 35px;
+
+    &_input {
+        width: 100%;
+        background-color: #105B60;
+        color: white;
+        border-radius: 35px;
+        padding: 21px 63px 20px 63px;
+        outline: none;
+        font-family: 'SF Pro Display', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        border: none;
+        box-sizing: border-box;
+
+        &::placeholder {
+            font-size: 20px;
+            padding: 63px 20px 63px 21px;
+            color: #FFFFFF;
+        }
+
+    }
+
+    &_iconn {
+        width: 25px;
+        height: 25px;
+        top: 8px;
+        left: 28px;
+        border-width: 0.75px;
+        
+        margin-right: 48px;
+        color: #FFFFFF;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .searchh {
+        &_input {
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        &_iconn {
+        }
+    }
+}

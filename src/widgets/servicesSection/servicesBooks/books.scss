@@ -1,0 +1,65 @@
+.services_books-enemy {
+    border-radius: 12px 12px 12px 12px;
+    margin-top: 20px;
+    color: aliceblue;
+    transition: none !important; 
+    cursor: pointer;
+}
+
+.services_btn {
+    background-color: #105B60;
+    border: none;
+    float: right;
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+}
+
+.services_title_block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.services_id {
+    font-size: 20px;
+}
+
+.services_title {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.services_block {
+    transition: none !important; 
+}
+
+.services-text {
+    text-align: center;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1450px) {
+    .services_title {
+         
+        margin: 0 auto;
+         
+    }
+    
+     
+}
+
+@media screen and (max-width: 380px) {
+
+    .services_title {
+        width: 220px;
+        margin: 0 auto;
+        font-size: 15px;
+    }
+    .services_block {
+        width: 200000%;
+    }
+}

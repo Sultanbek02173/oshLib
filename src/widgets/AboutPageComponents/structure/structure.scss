@@ -1,0 +1,49 @@
+.structure-container{
+    color: #105B60;
+    margin-top: 50px;
+
+    &-title{
+        font-family: Kino;
+    }
+    &-img{
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+    }
+
+}
+@media screen and (max-width: 1200px) {
+    .structure-container-title{
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .structure-container-title{
+        font-size: 32px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .structure-container-title{
+        font-size: 28px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .structure-container{
+        width: 135%;
+    }
+    .structure-container-title{
+        font-size: 30px;
+        margin: 2%;
+    }
+
+}
+@media screen and (max-width: 320px) {
+    .structure-container{
+        width: 170%;
+    }
+    .structure-container-title{
+        font-size: 30px;
+        margin: 2%;
+    }
+
+}

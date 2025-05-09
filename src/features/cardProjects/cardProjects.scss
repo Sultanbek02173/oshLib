@@ -1,0 +1,130 @@
+.projects {
+  margin-top: 24px;
+
+  &-main-title {
+    color: #105b60;
+    font-family: Kino;
+    margin-top: 50px;
+    font-size: 31.2px;
+  }
+
+  &-grid {
+    width: 100%;
+    color: white;
+    &-none {
+      display: none;
+    }
+    &-items {
+      display: flex;
+      background-color: #105b60;
+      padding: 30px;
+      border-radius: 20px;
+      gap: 20px;
+
+      &-left {
+        &-img {
+          width: 150px;
+          height: 150px;
+          border-radius: 10px;
+          object-fit: cover;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+          }
+        }
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        // margin-top: -8px;
+
+        &-title {
+          font-size: 19px;
+        }
+
+        &-description {
+          width: 65%;
+          margin-top: 10px;
+          font-size: 16px;
+        }
+
+        &-button {
+          background-color: white;
+          color: #105b60;
+          border: none;
+          border-radius: 37.5px;
+          text-align: center;
+          // padding: 8px;
+          padding: 12px 35px;
+        }
+        a {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}
+// @media (min-width: 993px) {
+//   .projects-grid-items {
+//     flex-direction: row;
+//     align-items: flex-start;
+//   }
+//   .projects-grid-items-text {
+//     justify-content: space-between;
+//   }
+// }
+
+@media screen and (max-width: 768px) {
+  .projects-grid-items {
+    flex-direction: column;
+    &-left {
+      display: flex;
+      column-gap: 20px;
+      flex-direction: row;
+      &-img {
+        width: 200px;
+        height: 150px;
+        border-radius: 8.4px;
+      }
+    }
+    &-text {
+      &-description {
+        width: 100%;
+      }
+      &-title {
+        display: none;
+      }
+      a {
+        margin-top: 10px;
+        width: 100%;
+        display: block;
+      }
+      &-button {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  .projects-grid-none {
+    display: block;
+  }
+}
+@media screen and (max-width: 576px) {
+  .projects-grid-items-left {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+  }
+  .projects-grid-items-text-description {
+    text-align: start;
+  }
+  .projects-grid-items-left-img {
+    width: 100%;
+  }
+}

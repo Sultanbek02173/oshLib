@@ -1,0 +1,143 @@
+.payment {
+    .title_payment {
+        color: #105B60;
+        margin-top: 100px;
+        font-size: 30px;
+        font-family: 'Kino', sans-serif;
+        font-weight: 400;
+    }
+
+    .block_py {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #105B60;
+        width: 100%;
+        height: 160px;
+        border-radius: 20px;
+        margin-top: 20px;
+        transition: opacity 0.3s;
+    }
+
+    .payment_text {
+        color: #fff;
+        margin-left: 60px;
+        font-size: 45px;
+        font-family: 'Kino', sans-serif;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    .img_payment {
+        width: 78px;
+        height: 78px;
+        border-radius: 15px;
+        margin-right: 60px;
+    }
+
+    @media (max-width: 1024px) {
+        .title_payment {
+            font-size: 25px;
+        }
+
+        .payment_text {
+            font-size: 40px;
+        }
+
+        .img_payment {
+            width: 72px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .title_payment {
+            font-size: 20px;
+        }
+
+        .payment_text {
+            font-size: 35px;
+            margin-left: 30px;
+        }
+
+        .img_payment {
+            width: 70px;
+            margin-right: 30px;
+        }
+    }
+
+    @media (max-width: 536px) {
+        .title_payment {
+            font-size: 20px;
+        }
+
+        .payment_text {
+            font-size: 30px;
+            margin-left: 30px;
+        }
+
+        .img_payment {
+            width: 70px;
+            margin-right: 30px;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .payment_text {
+        font-size: 23px;
+    }
+}
+
+.qr_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    flex-direction: column;
+}
+
+.qr_code {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    z-index: 101;
+    margin-bottom: 20px;
+}
+
+.qr_button {
+    padding: 10px 68px;
+    background-color: #105B60;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    z-index: 101;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

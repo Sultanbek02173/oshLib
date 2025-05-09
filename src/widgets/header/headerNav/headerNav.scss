@@ -1,0 +1,61 @@
+.headerNav {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    &_link {
+        text-decoration: none;
+        color: #105B60;
+        font-weight: 500;
+        font-size: 16px; 
+        white-space: nowrap;
+        transition: color 0.3s ease;
+
+        &.active {
+            color: #23858C; 
+            font-weight: 700;
+            border-bottom:  2px solid gray;
+            
+        }
+
+        &:hover {
+            color: #23858C;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .headerNav {
+        gap: 15px;
+
+        &_link {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .headerNav {
+        gap: 10px;
+
+        &_link {
+            font-size: 12px; 
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .headerNav {
+        flex-direction: column;
+        gap: 20px;
+
+        &_link {
+            font-size: 16px; 
+        }
+    }
+}

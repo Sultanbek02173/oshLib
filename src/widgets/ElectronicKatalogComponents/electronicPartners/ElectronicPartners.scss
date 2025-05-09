@@ -1,0 +1,40 @@
+.sponsors_title {
+  color: #105B60;
+  margin-top: 150px;
+  font-family: Kino;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.sponsors_list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+  justify-items: center;
+}
+
+.sponsor_logo {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .sponsors_title {
+    font-size: 25px;
+  }
+
+  .sponsors_list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors_title {
+    font-size: 20px;
+  }
+
+  .sponsors_list {
+    grid-template-columns: 1fr;
+  }
+}

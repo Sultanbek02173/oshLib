@@ -1,0 +1,29 @@
+.sponsor {
+    margin-top: 150px;
+    color: #105B60;
+    font-size: 17px;
+
+    .title_sponsor {
+        font-family: Kino;
+        font-weight: 400;
+        font-size: 36px;
+
+    }
+
+    .img_sponsor {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 1024px) {
+        .title_sponsor {
+            font-size: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .title_sponsor {
+            font-size: 20px;
+        }
+    }
+}
