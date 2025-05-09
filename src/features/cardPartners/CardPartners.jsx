@@ -1,4 +1,4 @@
-import "./CardPartners.scss";
+import "./cardPartners.scss";
 
 
 export function CardPartners() {
