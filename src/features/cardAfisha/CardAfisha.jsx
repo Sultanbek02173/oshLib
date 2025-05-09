@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-import "./CardAfisha.scss";
+import "./cardAfisha.scss";
 
 export const CardAfisha = ({ id, image, title, time, description, tablet }) => {
   return (
