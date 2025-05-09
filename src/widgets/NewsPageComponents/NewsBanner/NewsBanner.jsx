@@ -1,4 +1,4 @@
-import "./newsBanner.scss";
+import "./NewsBanner.scss";
 import { useDispatch } from "react-redux";
 import { useNews } from "../../../app/store/reducers/news/newsSlice";
 import React, { useEffect } from "react";
