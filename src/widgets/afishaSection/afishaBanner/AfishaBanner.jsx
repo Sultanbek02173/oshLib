@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import ikrom from "../../../shared/eventsImg/ikrom.png";
 import "./afishaBanner.scss";
 import {
   getAfishaBanner,
