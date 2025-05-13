@@ -12,6 +12,7 @@
             img {
                 width: 244px;
                 height: 73px;
+                object-fit: cover;
                 display: block;
             }
         }
@@ -32,6 +33,7 @@
                 padding: 5px;
                 margin-left: 17px;
                 width: 100%;
+                position: relative;
 
                 input {
                     border-radius: 35px;
@@ -49,6 +51,37 @@
                     cursor: pointer;
                     color: #105B60;
                     font-size: 22px;
+                }
+
+                .search__cont{
+                    position: absolute;
+                    width: 100%;
+                    top: 50px;
+                    left: 0;
+                    background-color: #fff;
+                    z-index: 4;
+                    padding: 20px;
+
+                    &__item{
+                        display: flex;
+                        margin-top: 10px;
+                        padding: 10px;
+                        div{
+                            width: 70%;
+                        }
+                        h2{
+                            font-size: 18px;
+                        }
+
+                        img{
+                            width: 40%;
+                            height: 100px;
+                            object-fit: cover;
+                        }
+                    }
+                    &__item:hover{
+                        background-color: #105b60;
+                    }
                 }
             }
 
@@ -130,210 +163,14 @@
         justify-content: center;
         cursor: pointer;
         gap: 30px;
-    }
 
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999; 
-    }
-
-    .faUser {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.8);
-        background-color: #fff;
-        border-radius: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        width: 500px;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        border: 3px solid #23858C;
-        opacity: 0; 
-        animation: modalFadeIn 0.3s ease forwards; 
-
-        @keyframes modalFadeIn {
-            from {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .cors {
+        a{
             display: flex;
-            justify-content: flex-end;
-
-            .cross {
-                cursor: pointer;
-                font-size: 20px;
-                color: white;
-                font-weight: bold;
-                background-color: #105B60;
-                border-radius: 50%;
-                padding: 19px;
-                position: absolute;
-                top: -20px;
-                right: -20px;
-            }
-        }
-
-        .warning {
-            text-align: center;
-
-            .getOut {
-                h1 {
-                    width: 100%;
-                    height: 25px;
-                    font-family: 'Kino', sans-serif;
-                    font-weight: 400;
-                    font-size: 25px;
-                    line-height: 100%;
-                    letter-spacing: 0%;
-                    color: #105B60;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-transform: uppercase;
-                    padding: 0 0 50px 0;
-                }
-            }
-
-            .areSure {
-                p {
-                    margin-top: 20px;
-                    font-size: 20px;
-                    color: #000000;
-                    margin: 10px 0 0;
-                }
-            }
-        }
-
-        .confirmation {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 20px;
-
-            .cancel,
-            .YesExit {
-                flex: 1;
-
-                button {
-                    width: 100%;
-                    padding: 20px;
-                    border: none;
-                    border-radius: 5px;
-                    font-family: 'Kino', sans-serif;
-                    font-size: clamp(14px, 1.5vw, 16px);
-                    cursor: pointer;
-                    transition: background-color 0.3s;
-                }
-            }
-
-            .cancel {
-                button {
-                    background-color: #105B60;
-                    color: #fff;
-                }
-            }
-
-            .YesExit {
-                button {
-                    background-color: #105B60;
-                    color: #fff;
-                }
-            }
-        }
-    }
-
-    .successModal {
-        border: 3px solid #23858C;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.8); 
-        background-color: #fff;
-        border-radius: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        width: 500px;
-        height: auto;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        opacity: 0; 
-        animation: modalFadeIn 0.3s ease forwards; 
-
-        @keyframes modalFadeIn {
-            from {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .cors {
-            display: flex;
-            justify-content: flex-end;
-
-            .cross {
-                cursor: pointer;
-                font-size: 20px;
-                color: white;
-                font-weight: bold;
-                background-color: #105B60;
-                border-radius: 50%;
-                padding: 19px;
-                position: absolute;
-                top: -20px;
-                right: -20px;
-            }
-        }
-
-        .successContent {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 20px;
-
-            .checkIcon {
-                width: 250px; 
-                height: 250px;
-                background-color: #105B60;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                font-size: 150px;
-            }
-
-            p {
-                font-family: 'Kino', sans-serif;
-                font-size: 20px;
-                color: #105B60;
-                margin: 0;
-                text-transform: uppercase;
-                text-align: center;
-            }
+            justify-content: center;
         }
     }
+
 }
 
 @media screen and (max-width: 1400px) {
@@ -398,69 +235,8 @@
             display: none;
         }
 
-        .faUser {
-            width: clamp(280px, 50vw, 400px);
-            padding: 15px;
 
-            .cors {
-                .cross {
-                    padding: 10px;
-                    top: -15px;
-                    right: -15px;
-                }
-            }
-
-            .warning {
-                .getOut {
-                    h1 {
-                        font-size: clamp(18px, 2vw, 22px);
-                    }
-                }
-
-                .areSure {
-                    p {
-                        font-size: clamp(13px, 1.5vw, 15px);
-                    }
-                }
-            }
-
-            .confirmation {
-                gap: 10px;
-
-                .cancel,
-                .YesExit {
-                    button {
-                        font-size: clamp(13px, 1.5vw, 15px);
-                        padding: 8px;
-                    }
-                }
-            }
-        }
-
-        .successModal {
-            width: clamp(280px, 50vw, 400px);
-            padding: 15px;
-
-            .cors {
-                .cross {
-                    padding: 10px;
-                    top: -15px;
-                    right: -15px;
-                }
-            }
-
-            .successContent {
-                .checkIcon {
-                    width: 200px;
-                    height: 200px;
-                    font-size: 120px;
-                }
-
-                p {
-                    font-size: clamp(20px, 2.5vw, 24px);
-                }
-            }
-        }
+    
     }
 }
 
@@ -480,71 +256,5 @@
             }
         }
 
-        .faUser {
-            width: 90vw;
-            padding: 10px;
-            
-            .cors {
-                .cross {
-                    font-size: 18px;
-                    padding: 8px;
-                    top: -10px;
-                    right: -10px;
-                }
-            }
-
-            .warning {
-                .getOut {
-                    h1 {
-                        font-size: clamp(16px, 2vw, 20px);
-                    }
-                }
-
-                .areSure {
-                    p {
-                        font-size: clamp(12px, 1.5vw, 14px);
-                    }
-                }
-            }
-
-            .confirmation {
-                flex-direction: column;
-                gap: 10px;
-
-                .cancel,
-                .YesExit {
-                    button {
-                        font-size: clamp(12px, 1.5vw, 14px);
-                        padding: 10px;
-                    }
-                }
-            }
-        }
-
-        .successModal {
-            width: 90vw;
-            padding: 10px;
-
-            .cors {
-                .cross {
-                    font-size: 18px;
-                    padding: 8px;
-                    top: -10px;
-                    right: -10px;
-                }
-            }
-
-            .successContent {
-                .checkIcon {
-                    width: 150px;
-                    height: 150px;
-                    font-size: 90px;
-                }
-
-                p {
-                    font-size: clamp(16px, 2vw, 18px);
-                }
-            }
-        }
     }
 }

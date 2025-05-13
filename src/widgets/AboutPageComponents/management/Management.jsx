@@ -12,8 +12,6 @@ export const Management = () => {
         dispatch(fetchManagementData());
         dispatch(fetchAboutTitlesData());
     }, [dispatch]);
-    // console.log("management:", management);
-    // console.log("aboutTitles:", aboutTitles);
     
     return (
         <div className='management-container container'>

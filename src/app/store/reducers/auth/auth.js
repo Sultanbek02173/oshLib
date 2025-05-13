@@ -1,7 +1,13 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAction, createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import axios from "axios";
-import instance from "../../../shared/api/Axios";
+import {
+  confirmCode,
+  getCategory,
+  logoutUser,
+  sendCode,
+  userLogin,
+  userRegister,
+} from "./authThunks";
 
 const SET_USER = "SET_USER";
 const SET_LOGIN = "SET_LOGIN";
@@ -13,61 +19,9 @@ const initialState = {
   refresh: localStorage.getItem("refresh") || "",
   access: localStorage.getItem("access") || "",
   category: [],
+  codeDetail: null,
   error: null,
 };
-
-export const userRegister = createAsyncThunk(
-  "/register",
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const formData = new FormData();
-      Object.keys(credentials).forEach((key) => {
-        if (credentials[key] !== null) {
-          formData.append(key, credentials[key]);
-        }
-      });
-
-      const { data } = await axios.post(
-        "http://librarygeekspro.webtm.ru/ru/api/v1/users/register/",
-        formData
-      );
-      return data;
-    } catch (e) {
-      console.log(e);
-      return rejectWithValue(e.response?.data || e.message);
-    }
-  }
-);
-
-export const userLogin = createAsyncThunk(
-  "/login",
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post(
-        "http://librarygeekspro.webtm.ru/ru/api/v1/users/login/",
-        credentials
-      );
-      return data;
-    } catch (e) {
-      console.log(e);
-      return rejectWithValue(e.response?.data || e.message);
-    }
-  }
-);
-
-export const logoutUser = createAsyncThunk("/logoutUser", async () => {
-  return true;
-});
-
-export const getCategory = createAsyncThunk("/getCategory", async () => {
-  try {
-    const { data } = await instance.get("users/categories/");
-    return data;
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-});
 
 const authSlice = createSlice({
   name: "auth",
@@ -84,9 +38,9 @@ const authSlice = createSlice({
       })
       .addCase(userRegister.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.user = payload;
-        state.refresh = payload?.refresh || "";
-        state.access = payload?.access || "";
+        state.user = payload.user || payload;
+        state.refresh = payload.tokens?.refresh || "";
+        state.access = payload.tokens?.access || "";
       })
       .addCase(userRegister.rejected, (state, { payload }) => {
         state.loading = false;
@@ -132,6 +86,37 @@ const authSlice = createSlice({
         state.login = null;
         state.refresh = "";
         state.access = "";
+      })
+
+      .addCase(sendCode.pending, (state) => {
+        state.pending = true;
+      })
+      .addCase(sendCode.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.codeDetail = payload;
+      })
+      .addCase(sendCode.rejected, (state, { payload }) => {
+        state.loading = false;
+        if (payload) {
+          state.error = payload;
+        } else {
+          state.error = { detail: "Что-то пошло не так. Попробуйте снова." };
+        }
+      })
+      .addCase(confirmCode.pending, (state) => {
+        state.pending = true;
+      })
+      .addCase(confirmCode.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.codeDetail = payload;
+      })
+      .addCase(confirmCode.rejected, (state, { payload }) => {
+        state.loading = false;
+        if (payload) {
+          state.error = payload;
+        } else {
+          state.error = { detail: "Что-то пошло не так. Попробуйте снова." };
+        }
       })
 
       .addCase(SET_USER, (state, { payload }) => {

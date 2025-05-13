@@ -13,8 +13,8 @@ export const fetchServicesData = createAsyncThunk(
 const servicesSlice = createSlice({
   name: "services",
   initialState: {
-    data: [],          
-    status: "idle",    
+    data: [],
+    status: "idle",
     error: null,
   },
   reducers: {},
@@ -34,5 +34,5 @@ const servicesSlice = createSlice({
   },
 });
 
-export const useCatalog = () => useSelector((state) => state.services)
+export const useCatalog = () => useSelector((state) => state.services);
 export default servicesSlice.reducer;

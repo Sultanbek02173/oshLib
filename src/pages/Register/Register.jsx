@@ -1,9 +1,9 @@
-import React from "react";
 import RegisterForm from "../../widgets/Auth/RegisterForm";
-import { userRegister } from "../../app/store/reducers/auth";
+import { userRegister } from "../../app/store/reducers/auth/authThunks";
 import { useDispatch } from "react-redux";
 import image from "./image.png";
 import "./register.scss";
+
 const Register = () => {
   const dispatch = useDispatch();
   const onSubmit = async (credentials) => {

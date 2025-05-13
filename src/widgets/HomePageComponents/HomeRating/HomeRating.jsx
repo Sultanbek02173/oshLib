@@ -32,7 +32,9 @@ export function HomeRating() {
       <section className="rating">
         <h2 className="rating__title main__title">Рейтинг читателей (ТОП-3)</h2>
         <div className="rating__grid">
-          {readers.map((item) => (
+          {
+            readers && 
+          readers.slice(0, 3).map((item) => (
             <article
               key={item.id}
               onClick={() => handleActivePeople(item.id)}
@@ -54,7 +56,9 @@ export function HomeRating() {
 
         <h2 className="rating__title main__title ">Рейтинг книг (ТОП-3)</h2>
         <div className="rating__grid">
-          {books.map((item) => (
+          {
+            books &&
+          books.slice(0, 3).map((item) => (
             <article
               key={item.id}
               onClick={() => handleActiveBooks(item.id)}

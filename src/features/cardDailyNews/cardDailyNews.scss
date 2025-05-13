@@ -1,6 +1,7 @@
 .cardDailyNews {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 315px;
   height: 525px;
   gap: 15px;

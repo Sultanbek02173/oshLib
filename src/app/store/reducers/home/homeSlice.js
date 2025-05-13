@@ -14,7 +14,11 @@ const initialState = {
 const homeSlice = createSlice({
   name: "home",
   initialState,
-  reducers: {},
+  reducers: {
+    clearSearch(state) {
+      state.search = [];
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCollection.pending, (state) => {
@@ -70,5 +74,7 @@ const homeSlice = createSlice({
       });
   },
 });
+
+export const {clearSearch} = homeSlice.actions;
 export const useHome = () => useSelector((state) => state.home);
 export default homeSlice.reducer;

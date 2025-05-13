@@ -41,13 +41,9 @@ const newsSlice = createSlice({
       .addCase(getDailyNews.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getDailyNews.fulfilled, (state, action) => {
-        const { results, count, next, previous } = action.payload;
+      .addCase(getDailyNews.fulfilled, (state, {payload}) => {
         state.loading = false;
-        state.list = results;
-        state.pagination = { count, next, previous };
-        state.currentPage = 1;
-        state.totalPages = Math.ceil(count / results.length);
+        state.list = payload;
       })
       .addCase(getDailyNews.rejected, (state) => {
         state.loading = false;

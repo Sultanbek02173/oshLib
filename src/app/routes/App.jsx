@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "../styles/app.scss";
 import {
   HomePage,
@@ -21,9 +21,13 @@ import { Footer, Header, Breadcrumb, Scroll } from "../../widgets";
 import React, { useEffect } from "react";
 import Register from "../../pages/Register/Register";
 import { useDispatch } from "react-redux";
-import { switchingPage } from "../store/reducers/auth";
+import {
+  switchingPage,
+} from "../store/reducers/auth/auth";
 import Login from "../../pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import Forgot from "../../pages/Forgot/Forgot";
+import Confirm from "../../pages/Confirm/Confirm";
 
 export const routesArr = [
   {
@@ -130,6 +134,7 @@ function App() {
   useEffect(() => {
     dispatch(switchingPage());
   }, [pathname, dispatch]);
+  
   return (
     <React.Fragment>
       {pathname !== "/register" && pathname !== "/login" && <Header />}
@@ -160,7 +165,7 @@ function App() {
             }
           />
           <Route
-            path={"/electronic/:id"}
+            path={"/electronic"}
             element={
               <ProtectedRoute>
                 <ElectronicPage />
@@ -170,6 +175,8 @@ function App() {
           <Route path={"/professional"} element={<ProfessionalPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path="/confirm" element={<Confirm />} />
         </Routes>
         {pathname !== "/register" && pathname !== "/login" && <Footer />}
       </ScrollToTop>

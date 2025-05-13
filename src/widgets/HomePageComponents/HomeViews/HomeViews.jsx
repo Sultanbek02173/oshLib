@@ -11,17 +11,19 @@ export function HomeViews({ mobile }) {
 
   useEffect(() => {
     dispatch(getCollection());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container">
       <div className="home-views">
         <div className="content">
-          {collection?.map((item) => (
+          {
+          collection &&
+          collection.map((item) => (
             <React.Fragment key={item.id}>
               <div className="video-wrapper">
                 <ReactPlayer
-                  url={item.video}
+                  url={item.video_file}
                   controls
                   width="100%"
                   height="auto"
@@ -39,7 +41,7 @@ export function HomeViews({ mobile }) {
                       : item.description,
                   }}
                 />
-                <button className="details-button">подробнее</button>
+                <button className="details-button"><a target="_blank" href={item.link}>подробнее</a></button>
               </div>
             </React.Fragment>
           ))}

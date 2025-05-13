@@ -1,4 +1,4 @@
-import { ElectronicPartners, SupportBanner, SupportPartners, SupportPayment, SupportValue } from '../../widgets';
+import { ElectronicPartners, SupportBanner, SupportPayment, SupportValue } from '../../widgets';
 import './supportPage.scss';
 
 export const SupportPage = () => {

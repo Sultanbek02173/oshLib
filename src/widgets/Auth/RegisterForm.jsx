@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { getCategory, useAuth } from "../../app/store/reducers/auth";
+import { useAuth } from "../../app/store/reducers/auth/auth";
+import { eventHandler } from "../../shared/utils/eventHandlers";
+import { getCategory } from "../../app/store/reducers/auth/authThunks";
 
 const RegisterForm = ({ onSubmit }) => {
   const { 0: state, 1: setState } = useState({
@@ -20,40 +22,7 @@ const RegisterForm = ({ onSubmit }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
-  const onFileChange = (e) => {
-    const { name, files } = e.target;
-
-    if (files) {
-      setState((prevState) => ({
-        ...prevState,
-        [name]: files[0],
-      }));
-    }
-  };
-
-  // const onFormSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const hasErrors = !!error && Object.keys(error).length > 0;
-
-  //   if (hasErrors) {
-  //     alert("Пожалуйста, исправьте ошибки в форме!");
-  //     return;
-  //   }
-
-  //   if (!agree) {
-  //     alert("Пожалуйста, подтвердите согласие с условиями!");
-  //     return;
-  //   }
-
-  //   onSubmit(state);
-  //   navigate("/");
-  // };
+  const onChange = eventHandler(setState);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -237,7 +206,7 @@ const RegisterForm = ({ onSubmit }) => {
       <button className="register__form-submit">Регистрация</button>
       <div className="login__form-row">
         <p className="login__form-no">У вас есть учетная запись?</p>
-        <Link to={"/register"} className="login__form-register">
+        <Link to={"/login"} className="login__form-register">
           Войти в аккаунт
         </Link>
       </div>

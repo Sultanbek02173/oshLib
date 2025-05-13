@@ -5,7 +5,7 @@ import { bookPartnersFetch } from '../../../app/store/reducers/bookElectronic';
 
 export const ElectronicPartners = () => {
     const dispatch = useDispatch();
-    const { partners, status, error } = useSelector((state) => state.bookElectronic);
+    const { partners } = useSelector((state) => state.bookElectronic);
 
     useEffect(() => {
         dispatch(bookPartnersFetch());

@@ -1,0 +1,14 @@
+.confirm {
+  &__form {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .forgot__form-input {
+      margin-bottom: 20px;
+    }
+    .register__form-error {
+      align-self: self-start;
+    }
+  }
+}

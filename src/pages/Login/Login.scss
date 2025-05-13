@@ -1,6 +1,7 @@
 .login {
   position: relative;
-  padding: 130px 0;
+  padding: 100px 0;
+  height: 100vh;
   &::after {
     content: "";
     display: block;
@@ -23,26 +24,26 @@
     &-title {
       font-family: Kino;
       font-weight: 400;
-      font-size: 50px;
+      font-size: 30px;
       line-height: 100%;
       letter-spacing: 0%;
       vertical-align: middle;
-      margin-bottom: 60px;
+      margin-bottom: 30px;
     }
     &-subtitle {
       font-family: SF Pro Display;
       font-weight: 400;
-      font-size: 25px;
+      font-size: 20px;
       line-height: 100%;
       letter-spacing: 0%;
       text-align: start;
       vertical-align: middle;
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
     &-description {
       font-family: SF Pro Display;
       font-weight: 400;
-      font-size: 25px;
+      font-size: 20px;
       line-height: 100%;
       letter-spacing: 0%;
       vertical-align: middle;
@@ -53,7 +54,7 @@
     &-title {
       font-family: Kino;
       font-weight: 400;
-      font-size: 66px;
+      font-size: 35px;
       line-height: 100%;
       letter-spacing: 0%;
       vertical-align: middle;
@@ -71,11 +72,24 @@
     }
   }
   &__form {
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
+    &-back{
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 20px;
+      vertical-align: middle;
+      text-decoration: none;
+      padding: 15px 20px;
+      background-color: #105b60;
+      color: #fff;
+      border-radius: 50px;
+      border: none;
+    }
     &-label {
-      font-family: SF Pro Display;
+      font-family: "SF Pro Display";
       font-weight: 400;
       font-size: 18px;
       line-height: 25px;
@@ -88,17 +102,17 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 20px;
-      letter-spacing: 0%;
       vertical-align: middle;
       color: #105b60;
-      margin-bottom: 100px;
+      margin-bottom: 50px;
     }
     &-row {
-      margin-top: 50px;
+      margin-top: 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+    
     &-no {
       font-family: Inter;
       font-weight: 500;

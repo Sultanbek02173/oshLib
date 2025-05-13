@@ -5,10 +5,8 @@ import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 import { CardBook } from '../../../features/cardBook/CardBook';
 import { fetchBookElectronic } from '../../../app/store/reducers/bookElectronic';
-import { useParams } from 'react-router-dom';
 
 export const ElectronicSearch = () => {
-    const { id } = useParams();
     const dispatch = useDispatch();
     const { books } = useSelector(state => state.bookElectronic);
 
@@ -32,11 +30,6 @@ export const ElectronicSearch = () => {
         const matchesKeyword = card.description?.toLowerCase().includes(keywordFilter.toLowerCase());
 
         const isPopular = (card.downloads && card.downloads > popularityThreshold) || (card.views && card.views > popularityThreshold);
-        
-        if(id >= 0){
-            const isId = (card.id + '') === id
-            return matchesAuthor && matchesTitle && matchesKeyword && isId;
-        }
 
         if (activeFilter === 'popular') {
             return matchesAuthor && matchesTitle && matchesKeyword && isPopular;
@@ -46,10 +39,12 @@ export const ElectronicSearch = () => {
         return matchesAuthor && matchesTitle && matchesKeyword;
     }) || [];
 
+    console.log(filteredCards);
+    
+
     const toggleModal = () => setIsMenuOpen(!isMenuOpen);
     const loadMoreCards = () => setVisibleCards(filteredCards.length);
     const hideCards = () => setVisibleCards(5);
-    console.log(id);
     
     return (
         <div className="electronicSearch container">

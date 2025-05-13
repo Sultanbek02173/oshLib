@@ -64,14 +64,11 @@ export function CardNews() {
                     <div className="news-content">
                       <h3>{news.title}</h3>
                       <hr />
-                      {/* <span className="news-date">
-                        {news.date} - {news.time}
-                      </span> */}
                       <p
                         dangerouslySetInnerHTML={{
                           __html:
                             news.description.length > 10
-                              ? news.description.substr(0, 30).trim() + "..."
+                              ? news.description.substr(0, 50).trim() + "..."
                               : news.description,
                         }}
                       />
@@ -93,14 +90,11 @@ export function CardNews() {
                   />
                   <div className="news-content">
                     <h3>{news.title}</h3>
-                    {/* <span className="news-date">
-                      {news.date} - {news.time}
-                    </span> */}
                     <p
                       dangerouslySetInnerHTML={{
                         __html:
                           news.description.length > 10
-                            ? news.description.substr(0, 30).trim() + "..."
+                            ? news.description.substr(0, 80).trim() + "..."
                             : news.description,
                       }}
                     />
