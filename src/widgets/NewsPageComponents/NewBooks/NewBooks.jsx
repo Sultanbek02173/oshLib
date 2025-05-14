@@ -18,7 +18,9 @@ export const NewBooks = () => {
     <div>
       <div className="cardAdvertisment container">
         <h1 className="cardAdvertisment__title">Обявление о мероприятиях</h1>
-        {events.map((event, index) => (
+        {
+        events &&
+        events.map((event, index) => (
           <CardAfisha
             id={event.id}
             key={index}

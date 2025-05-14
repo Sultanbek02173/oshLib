@@ -145,10 +145,10 @@ function App() {
           <Route path={"/services"} element={<ServicesPage />} />
           <Route path={"/project"} element={<ProjectPage />} />
           <Route path={"/project-detail/:id"} element={<ProjectDetail />} />
-          <Route path={"/news"} element={<NewsPage />} />
+          <Route path={"/news/:id"} element={<NewsPage />} />
           <Route path={"/news-detail/:id"} element={<NewsDetail />} />
 
-          <Route path={"/reader"} element={<ReaderPage />} />
+          <Route path={"/reader/:id"} element={<ReaderPage />} />
           <Route path={"/about"} element={<AboutPage />} />
           <Route path={"/support"} element={<SupportPage />} />
           <Route
@@ -160,7 +160,7 @@ function App() {
             }
           />
           <Route
-            path={"/electronic/:id"}
+            path={"/electronic"}
             element={
               <ProtectedRoute>
                 <ElectronicPage />

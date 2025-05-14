@@ -32,6 +32,7 @@
                 padding: 5px;
                 margin-left: 17px;
                 width: 100%;
+                position: relative;
 
                 input {
                     border-radius: 35px;
@@ -49,6 +50,37 @@
                     cursor: pointer;
                     color: #105B60;
                     font-size: 22px;
+                }
+
+                .search__cont{
+                    position: absolute;
+                    width: 100%;
+                    top: 50px;
+                    left: 0;
+                    background-color: #fff;
+                    z-index: 4;
+                    padding: 20px;
+
+                    &__item{
+                        display: flex;
+                        margin-top: 10px;
+                        padding: 10px;
+                        div{
+                            width: 70%;
+                        }
+                        h2{
+                            font-size: 18px;
+                        }
+
+                        img{
+                            width: 40%;
+                            height: 100px;
+                            object-fit: cover;
+                        }
+                    }
+                    &__item:hover{
+                        background-color: #105b60;
+                    }
                 }
             }
 

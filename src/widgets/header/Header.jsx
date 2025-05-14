@@ -17,7 +17,7 @@ import { IoCheckmark } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { logoutUser } from "../../app/store/reducers/auth";
 import { doSearch } from "../../app/store/reducers/home/homeThunks";
-import { useHome } from "../../app/store/reducers/home/homeSlice";
+import { clearSearch, useHome } from "../../app/store/reducers/home/homeSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -122,11 +122,19 @@ export const Header = () => {
     const delayDebounce = setTimeout(() => {
       if (inputValue.search.trim()) {
         dispatch(doSearch(inputValue));
+      }else{
+        dispatch(clearSearch());
       }
     }, 1000);    
 
     return () => clearTimeout(delayDebounce);
-  }, [inputValue]); 
+  }, [inputValue]);   
+
+  const clear = () => {
+    dispatch(clearSearch());
+    setInputValue({search: ''});
+  }
+  console.log(search.results.results);
   
   return (
     <div className="container">
@@ -145,12 +153,47 @@ export const Header = () => {
                   <input 
                     type="text" 
                     placeholder="Поиск" 
+                    value={inputValue.search}
                     onChange={(e) => setInputValue(prev => ({...prev, search: e.target.value}))}
                   />
                   
                   <button>
                     <CiSearch />
                   </button>
+
+                  {
+                    search?.results?.results.length > 0 ? (
+                    <div className="search__cont">
+                    {
+                    search.results.results.map((search, indx) => (
+                      <NavLink onClick={clear} to={`/${search.Pages}`} key={indx}>
+                        <div className="search__cont__item">
+                          {
+                            search.image && (
+                              <img src={`https://librarygeekspro.webtm.ru/${search.image}`} alt="" />
+                            )
+                          }
+                          <div>
+                          {search.title && (<h2>{search.title}</h2>)}
+                          {search.name && (<h2>{search.name}</h2>)}
+                          {
+                            search.description && (
+                              <p dangerouslySetInnerHTML={{__html:
+                              search.description.length > 15
+                              ? search.description.substr(0, 80).trim() + "..."
+                              : search.description,
+                            }}
+                              ></p>
+                            )
+                          }
+                          </div>
+                        </div>
+                      </NavLink>
+                    ))
+                    
+                  }
+                  </div>) : ''
+                }
                 </div>
                 <button
                   className="header_eye"
@@ -158,18 +201,6 @@ export const Header = () => {
                 >
                   <FaEyeSlash color="#105B60" className="eye" />
                 </button>
-                {
-                  search?.results?.results && 
-                  search.results.results.map((search, indx) => (
-                    <NavLink to={`/electronic/${search.id}`} key={indx}>
-                      <div>
-                        <img src={search.image} alt="" />
-                        <h2>{search.title}</h2>
-                      </div>
-                    </NavLink>
-                  ))
-                  
-                }
               </div>
               <HeaderNav className="header_nav-top" start={0} end={5} />
             </>
