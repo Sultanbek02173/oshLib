@@ -15,7 +15,7 @@ import { CiSearch } from "react-icons/ci";
 import { doSearch } from "../../app/store/reducers/home/homeThunks";
 import { clearSearch, useHome } from "../../app/store/reducers/home/homeSlice";
 import { getHeader } from "../../app/store/reducers/headerSlice";
-import ModemOkno from "../../entities/ModemOkno/ModemOkno";
+import { ModemOkno } from "../../entities";
 
 export const Header = () => {
   const dispatch = useDispatch();

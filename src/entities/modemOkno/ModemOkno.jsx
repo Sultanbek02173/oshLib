@@ -5,7 +5,8 @@ import { logoutUser } from "../../app/store/reducers/auth/authThunks";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./modemOkno.scss";
-const ModemOkno = ({
+
+export const ModemOkno = ({
   isModalOpen,
   setIsModalOpen,
   isSuccessModalOpen,
@@ -140,5 +141,3 @@ const ModemOkno = ({
     </div>
   );
 };
-
-export default ModemOkno;
