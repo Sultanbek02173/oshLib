@@ -39,6 +39,9 @@ export const ElectronicSearch = () => {
         return matchesAuthor && matchesTitle && matchesKeyword;
     }) || [];
 
+    console.log(filteredCards);
+    
+
     const toggleModal = () => setIsMenuOpen(!isMenuOpen);
     const loadMoreCards = () => setVisibleCards(filteredCards.length);
     const hideCards = () => setVisibleCards(5);

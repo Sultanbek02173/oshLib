@@ -1,8 +1,8 @@
-import React from "react";
 import LoginForm from "../../widgets/Auth/LoginForm";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../../app/store/reducers/auth";
+import { userLogin } from "../../app/store/reducers/auth/authThunks";
 import "./Login.scss";
+
 const Login = () => {
   const dispatch = useDispatch();
 

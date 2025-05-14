@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../app/store/reducers/auth";
-import { useDispatch } from "react-redux";
+import { useAuth } from "../../app/store/reducers/auth/auth";
+import { eventHandler } from "../../shared/utils/eventHandlers";
 
 const LoginForm = ({ onSubmit }) => {
   const { 0: state, 1: setState } = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const { category, error } = useAuth();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
+  const onChange = eventHandler(setState);
+  const nav = useNavigate()
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -38,17 +36,17 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <form className="login__form" onSubmit={onFormSubmit}>
       {error?.detail && <p className="register__form-error">{error.detail}</p>}
-      {!state.username.trim() && error?.username ? (
-        <p className="register__form-error">{error.username[0]}</p>
+      {!state.email.trim() && error?.email ? (
+        <p className="register__form-error">{error.email[0]}</p>
       ) : (
-        <p className="login__form-label">Эл. почта</p>
+        <p className="login__form-label">Почта</p>
       )}
 
       <input
         className="register__form-input"
         type="text"
         onChange={onChange}
-        name="username"
+        name="email"
       />
 
       {!state.password.trim() && error?.password ? (
@@ -59,11 +57,11 @@ const LoginForm = ({ onSubmit }) => {
 
       <input
         className="register__form-input"
-        type="text"
+        type="password"
         onChange={onChange}
         name="password"
       />
-      <Link className="login__form-forgot" to={"/register"}>
+      <Link className="login__form-forgot" to={"/forgot"}>
         Забыл пароль
       </Link>
       <button className="register__form-submit">Войти</button>
@@ -72,7 +70,9 @@ const LoginForm = ({ onSubmit }) => {
         <Link to={"/register"} className="login__form-register">
           Зарегистрироваться
         </Link>
+        <button onClick={() => nav(-1)} className="login__form-back">Назад</button>
       </div>
+
     </form>
   );
 };

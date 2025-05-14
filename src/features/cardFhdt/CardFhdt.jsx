@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./CardFhdt.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCatalogs } from "../../app/store/reducers/home/homeThunks";
 import { useHome } from "../../app/store/reducers/home/homeSlice";
 

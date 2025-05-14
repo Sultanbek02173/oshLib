@@ -14,5 +14,7 @@
     "day_graphic": "День недели",
     "time_graphic": "Время",
     "hosts": "Принимающие",
-    "schedule": "Календарь приёмов"
+    "schedule": "Календарь приёмов",
+    "Exhibition": "Выставка",
+    "Description": "Описание"   
 }

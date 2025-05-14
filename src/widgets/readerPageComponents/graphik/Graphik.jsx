@@ -1,20 +1,8 @@
 import "./graphik.scss";
-import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readerGraphicDirectorFetch, readerGraphicFetch } from "../../../app/store/reducers/readerSlice";
 import { useTranslation } from "react-i18next";
-
-const initialTime = [
-  {
-    day2: "Директор-Паланчаев Паланча ",
-    time2: "Вторник 16:00-18:00-Директор",
-  },
-  {
-    day2: "Директор-Паланчаев Паланча ",
-    time2: "Вторник 11:00-13:00-Зам-Директор",
-  },
-];
 
 export const Graphik = () => {
   const dispatch = useDispatch();
@@ -28,7 +16,6 @@ export const Graphik = () => {
   }, [dispatch]);
 
   const { titleData } = useSelector((state) => state.reader);
-  const [data] = useState(initialTime);
 
   return (
     <div className="grap container">
@@ -45,7 +32,9 @@ export const Graphik = () => {
           </tr>
         </thead>
         <tbody>
-          {graphicData.map((item, index) => (
+          {
+            graphicData &&
+          graphicData.map((item, index) => (
             <tr key={index}>
               <td className="grap-table_td">{item.title}</td>
               <td className="grap-table_td">

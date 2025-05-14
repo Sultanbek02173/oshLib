@@ -19,6 +19,7 @@ export const History = () => {
             <h1 className='history-container-title main__title'>{aboutTitles[0]?.title_4}</h1>
             <div className='history-container-text'>
                 {
+                    history && 
                     history.map((text) => (
                         <div key={text.id}>
                             <div key={text.id}>

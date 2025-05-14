@@ -5,8 +5,7 @@ import { NewBooks } from "../../widgets/NewsPageComponents/NewBooks/NewBooks";
 export const NewsPage = () => {
   return (
     <div>
-      <NewsBanner /> {/*адаптив готов */}
-      {/* <News/> */}
+      <NewsBanner /> 
       <DailyNews />
       <NewBooks />
       <NewsBooksUpdate />

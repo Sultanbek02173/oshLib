@@ -1,6 +1,7 @@
 .register {
   position: relative;
-  padding: 130px 0;
+  padding: 30px 0;
+  height: 100vh;
   &::after {
     content: "";
     display: block;
@@ -12,21 +13,18 @@
     height: 100%;
   }
   &__first {
-    padding-top: 100px;
     &-title {
       font-family: Kino;
       font-weight: 400;
-      font-size: 66px;
+      font-size: 32px;
       line-height: 86px;
-      letter-spacing: 0%;
       vertical-align: middle;
       color: #105b60;
     }
     &-subtitle {
-      margin-top: 16px;
       font-family: SF Pro Display;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 16px;
       line-height: 26px;
       letter-spacing: 0%;
       vertical-align: middle;
@@ -34,7 +32,7 @@
     }
   }
   &__form {
-    margin-top: 64px;
+    margin-top: 28px;
     &-error {
       color: red;
       font-family: SF Pro Display;
@@ -47,7 +45,6 @@
     }
     &-row {
       display: flex;
-      flex-wrap: wrap;
       column-gap: 15px;
       div {
         width: 50%;
@@ -55,16 +52,16 @@
     }
     &-input {
       width: 100%;
-      margin-bottom: 32px;
+      margin-bottom: 15px;
       outline: none;
-      padding: 19px 10px;
+      padding: 10px;
       border-radius: 10px;
       border: 1.5px solid #eaebec;
     }
     &-label {
       font-family: SF Pro Display;
       font-weight: 400;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 25px;
       letter-spacing: 0%;
       vertical-align: middle;
@@ -77,8 +74,8 @@
       p {
         font-family: Inter;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 25px;
+        font-size: 12px;
+        line-height: 18px;
         letter-spacing: 0%;
         color: #105b60;
       }
@@ -88,9 +85,8 @@
       width: 100%;
       font-family: SF Pro Display;
       font-weight: 700;
-      font-size: 34px;
+      font-size: 24px;
       line-height: 100%;
-      letter-spacing: 0%;
       vertical-align: middle;
       color: #fff;
       border: none;
@@ -108,25 +104,24 @@
     position: relative;
     z-index: 10;
     color: #fff;
+    margin: 0 80px;
     &-image {
       width: 100%;
     }
     &-title {
-      margin-top: 95px;
       margin-bottom: 50px;
       font-family: Kino;
       font-weight: 400;
-      font-size: 60px;
+      font-size: 40px;
       line-height: 100%;
       letter-spacing: 0%;
-      text-align: end;
+      text-align: start;
       vertical-align: middle;
-      // color: #fff;
     }
     &-subtitle {
       font-family: SF Pro Display;
       font-weight: 400;
-      font-size: 34px;
+      font-size: 24px;
       line-height: 100%;
       letter-spacing: 0%;
       text-align: start;
@@ -135,7 +130,7 @@
     &-description {
       font-family: SF Pro Display;
       font-weight: 400;
-      font-size: 34px;
+      font-size: 24px;
       line-height: 100%;
       letter-spacing: 0%;
       vertical-align: middle;

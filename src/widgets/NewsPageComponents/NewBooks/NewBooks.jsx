@@ -12,7 +12,7 @@ export const NewBooks = () => {
 
   useEffect(() => {
     dispatch(getNewsEvents());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

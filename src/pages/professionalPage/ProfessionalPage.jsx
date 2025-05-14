@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ProfessionalCategory } from "../../widgets/professionalComponents/professionalCategory/ProfessionalCategory";
 import { ProfessionalBaner } from "../../widgets/professionalComponents/professionalBaner/ProfessionalBaner";
 import { ProfessionalSearch } from "../../widgets/professionalComponents/professionalSearch/ProfessionalSearch";

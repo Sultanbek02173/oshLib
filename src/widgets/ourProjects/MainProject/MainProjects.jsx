@@ -1,9 +1,7 @@
-
-// src/pages/MainProjects.jsx (or wherever MainProjects is defined)
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProjects } from "../../../app/store/reducers/projectCategorySlice"; // Adjust path based on folder structure
-import { CardProjects } from "../../../features"; // Adjust path based on folder structure
+import { fetchProjects } from "../../../app/store/reducers/projectCategorySlice"; 
+import { CardProjects } from "../../../features"; 
 
 export const MainProjects = () => {
   const dispatch = useDispatch();

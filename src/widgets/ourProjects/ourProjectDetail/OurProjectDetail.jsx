@@ -11,7 +11,6 @@ export const OurProjectDetail = () => {
   const { projectDetail, loading, error } = useSelector((state) => state.project);
 
   useEffect(() => {
-    // console.log("Fetching project with ID:", id);
     dispatch(fetchProjectDetail(id));
   }, [dispatch, id]);
 
@@ -24,7 +23,7 @@ export const OurProjectDetail = () => {
     console.error("Error fetching project details:", error);
     return <div>Error: {errorMessage}</div>;
   }
-  if (!projectDetail) return <div>Project not found</div>;
+  if (!projectDetail) return <div></div>;
 
   const { image, title, description, additionalInfo } = projectDetail;
 

@@ -9,14 +9,17 @@ import "./HomeBanner.scss";
 export function HomeBanner() {
   const dispatch = useDispatch();
   const { list: data } = useBanner();
+
   useEffect(() => {
     dispatch(getBannerLogo());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home-banner">
       <div className="container">
-        {data?.map((item) => {
+        {
+          data &&
+        data.map((item) => {
           return (
             <React.Fragment key={item.id}>
               <div className="home-banner-images">

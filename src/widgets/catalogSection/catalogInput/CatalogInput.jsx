@@ -86,7 +86,7 @@ export const CatalogInput = () => {
 
   return (
     <main className="container">
-      <h2 className="main__title" >каталог</h2>
+      <h2 className="main__title">каталог</h2>
       <div className="catalog">
         <section className="parent__catalog-header">
           <div className="parent__catalog-header-wrap">

@@ -14,7 +14,7 @@ export  const Video = () => {
     useEffect(() => {
         dispatch(readerVideoFetch());
     }, [dispatch])
-   
+
     return (
         <div className='video container'>
         <h1 className='video-title '>{graphicVideo[0]?.title}</h1>

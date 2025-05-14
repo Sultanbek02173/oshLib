@@ -1,17 +1,15 @@
-
 import Books from '../../widgets/servicesSection/servicesBooks/Books';
 import { ServicesBanner } from '../../widgets/servicesSection/servicesBanner/ServicesBanner';
 import './servicesPage.scss'
 import { useEffect, useState } from 'react';
 import { fetchServicesData } from "../../app/store/reducers/servicesSlice";
-
 import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
+
 export const ServicesPage = () => {
     const [isVisible, setVisible] = useState(null);
     const dispatch = useDispatch();
 
-    const { data, } = useSelector((state) => state.services); // Assuming `status` and `error` are part of state
+    const { data, } = useSelector((state) => state.services); 
 
       useEffect(() => {
         dispatch(fetchServicesData());

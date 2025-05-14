@@ -5,16 +5,20 @@ import {
   useAfisha,
 } from "../../../app/store/reducers/afishaSlice";
 import { useEffect } from "react";
+
 export const AfishaBanner = () => {
   const dispatch = useDispatch();
   const { banner } = useAfisha();
 
   useEffect(() => {
     dispatch(getAfishaBanner());
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="afisha_baner">
-      {banner.map((item) => {
+      {
+        banner &&
+        banner.map((item) => {
         return (
           <div
             key={item.id}

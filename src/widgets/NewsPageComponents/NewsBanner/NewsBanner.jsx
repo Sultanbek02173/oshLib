@@ -11,6 +11,7 @@ export const NewsBanner = () => {
   useEffect(() => {
     dispatch(getNewsLogo());
   }, [dispatch]);
+  
   return (
     <div>
       <div className="servicesBanner">
@@ -24,7 +25,7 @@ export const NewsBanner = () => {
                   {item.title}
                 </h1>
                 <div className="servicesBanner_group ">
-                  <div className="">
+                  <div>
                     <img
                       src={item.left_image}
                       alt=""
