@@ -19,11 +19,11 @@ export function HomeViews({ mobile }) {
         <div className="content">
           {
           collection &&
-          collection.slice(1, 2).map((item) => (
+          collection.slice(0, 1).map((item) => (
             <React.Fragment key={item.id}>
               <div className="video-wrapper">
                 <ReactPlayer
-                  url={item.video_file}
+                  url={item.video}
                   controls
                   width="100%"
                   height="auto"
