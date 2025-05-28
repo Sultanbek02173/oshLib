@@ -37,9 +37,10 @@
     #rotatingText {
         animation:
             rotate-circle 20s linear infinite,
-            pulse 1s ease-in-out ;
+            pulse 1s ease-in-out;
         transition: all 0.3s ease;
         transform-origin: center;
+
         &:hover {
             animation-play-state: paused, paused;
             transform: scale(1.1);
@@ -47,12 +48,12 @@
     }
 
     @keyframes pulse {
-        from{
-            transform: scale(0) ;
+        from {
+            transform: scale(0);
         }
 
         to {
-            transform: scale(1) ;
+            transform: scale(1);
         }
     }
 
@@ -61,7 +62,7 @@
             transform: rotate(0deg);
         }
 
-        to{
+        to {
             transform: rotate(360deg);
         }
     }
@@ -120,7 +121,8 @@
         top: 25px;
         left: 0px;
         max-width: 800px;
-        font-family: kino;
+        font-family: 'SF Pro Display';
+        font-weight: 900;
         z-index: 2;
         transition: all 0.3s ease;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
@@ -246,9 +248,7 @@
 @media (max-width: 576px) {
     .projectBanner {
 
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-            url(../../../shared/images/ourBanner.png) center/cover no-repeat;
-        min-height: 900px;
+         min-height: 900px;
         padding: 20px;
         justify-content: space-evenly;
         flex-direction: column;

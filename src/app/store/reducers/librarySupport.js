@@ -6,7 +6,6 @@ export const librarySupportFetch = createAsyncThunk(
   async () => {
     try {
       const response = await StoreService.getSupportData();
-      // console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -19,7 +18,6 @@ export const libraryValuesFetch = createAsyncThunk(
   async () => {
     try {
       const response = await StoreService.getLibraryValues();
-      // console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -32,7 +30,6 @@ export const libraryPartnersFetch = createAsyncThunk(
   async () => {
     try {
       const response = await StoreService.getPartnersData();
-      // console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -41,32 +38,43 @@ export const libraryPartnersFetch = createAsyncThunk(
 );
 
 export const libraryPayTypeFetch = createAsyncThunk(
-    "librarySupport/fetchPayType",
-    async () => {
-      try {
-        const response = await StoreService.getPayType();
-        // console.log(response);
-        return response;
-      } catch (error) {
-        console.error(error);
-      }
+  "librarySupport/fetchPayType",
+  async () => {
+    try {
+      const response = await StoreService.getPayType();
+      return response;
+    } catch (error) {
+      console.error(error);
     }
-  );
-  
+  }
+);
+
+export const libraryTitleFetch = createAsyncThunk(
+  "librarySupport/fetchTitle",
+  async () => {
+    try {
+      const response = await StoreService.getLibraryTitle();
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 
 const initialState = {
   data: [],
   values: [],
   partners: [],
-  payType: [], 
+  payType: [],
+  titleData: null,
   status: "",
   valuesStatus: "",
   partnersStatus: "",
-  payTypeStatus: "", 
+  payTypeStatus: "",
   error: null,
   valuesError: null,
   partnersError: null,
-  payTypeError: null, 
+  payTypeError: null,
 };
 
 const librarySupportSlice = createSlice({
@@ -121,6 +129,10 @@ const librarySupportSlice = createSlice({
       .addCase(libraryPayTypeFetch.rejected, (state, action) => {
         state.payTypeStatus = "failed";
         state.payTypeError = action.error.message;
+      })
+
+      .addCase(libraryTitleFetch.fulfilled, (state, action) => {
+        state.titleData = action.payload;
       });
   },
 });

@@ -1,9 +1,12 @@
+// ProfessionalBaner.jsx
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { proactivityFetch } from '../../../app/store/reducers/proactivitySlice';
+import { useTranslation } from 'react-i18next';
 import './professionalBaner.scss';
 
 export const ProfessionalBaner = ({ activeTab, setActiveTab }) => {
+  const { t } = useTranslation(); 
   const dispatch = useDispatch();
   const proActivity = useSelector((state) => state.pro_activity) || {};
   const { data: proActivityData = [], status = 'idle', error = null } = proActivity;
@@ -21,10 +24,7 @@ export const ProfessionalBaner = ({ activeTab, setActiveTab }) => {
     }
   }, [proActivityData, activeTab, setActiveTab]);
 
-  // console.log('proActivityData:', proActivityData);
-
-  if (status === 'loading') return <div>Загрузка...</div>;
-  if (status === 'failed') return <div>Ошибка: {error || 'Не удалось загрузить данные'}</div>;
+  if (status === 'loading') return <div>{t('loading')}</div>;
 
   return (
     <div className="professional-baner container">
@@ -35,11 +35,12 @@ export const ProfessionalBaner = ({ activeTab, setActiveTab }) => {
             className={`professional-baner__button ${activeTab === item.type ? 'active' : ''}`}
             onClick={() => setActiveTab(item.type)}
           >
-            {item.title || item.type}
+            {item.title || t(item.type)} 
+            
           </button>
         ))
       ) : (
-        <div>Нет данных для отображения</div>
+        <div>{t('no_data', { defaultValue: 'Нет данных для отображения' })}</div>
       )}
     </div>
   );

@@ -19,7 +19,9 @@ export const SupportPartners = () => {
 
       <div className="partners-grid">
         {partners.map((partner, index) => (
-          <img key={index} className="img_sponsor" src={partner.images} alt=''/>
+          <a key={index} href={partner.links} target="_blank" rel="" >
+            <img className="img_sponsor" src={partner.images} alt={`Партнёр ${index + 1}`} />
+          </a>
         ))}
       </div>
     </div>

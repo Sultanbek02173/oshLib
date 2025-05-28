@@ -4,6 +4,7 @@ import "./HomeViews.scss";
 import { useDispatch } from "react-redux";
 import { useHome } from "../../../app/store/reducers/home/homeSlice";
 import { getCollection } from "../../../app/store/reducers/home/homeThunks";
+import { useTranslation } from "react-i18next";
 
 export function HomeViews({ mobile }) {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export function HomeViews({ mobile }) {
   useEffect(() => {
     dispatch(getCollection());
   }, [dispatch]);
+    const { t } = useTranslation();
 
   return (
     <div className="container">
@@ -41,7 +43,7 @@ export function HomeViews({ mobile }) {
                       : item.description,
                   }}
                 />
-                <button className="details-button"><a target="_blank" href={item.link}>подробнее</a></button>
+                <a target="_blank" href={item.link}><button className="details-button">{t("More")}</button></a>
               </div>
             </React.Fragment>
           ))}

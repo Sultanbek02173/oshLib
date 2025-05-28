@@ -6,6 +6,8 @@ import "swiper/css/scrollbar";
 import { useDispatch } from "react-redux";
 import { useNews } from "../../app/store/reducers/news/newsSlice";
 import { getDailyNewsNo } from "../../app/store/reducers/news/newsThunks";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function CardNews() {
   const dispatch = useDispatch();
@@ -13,6 +15,9 @@ export function CardNews() {
   const getIsTabletop = () =>
     window.innerWidth >= 768 && window.innerWidth <= 1200;
   const getIsMobile = () => window.innerWidth <= 460;
+  const navigate = useNavigate();
+  // const [id, setId] = useState(null);
+ 
 
   const [isTabletop, setIsTabletop] = useState(getIsTabletop());
   const [isMobile, setIsMobile] = useState(getIsMobile());
@@ -32,6 +37,7 @@ export function CardNews() {
   };
 
   const itemsToShow = isMobile ? newsItems : newsItems.slice(0, 8);
+    const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getDailyNewsNo());
@@ -53,7 +59,9 @@ export function CardNews() {
                 786: { slidesPerView: 2 },
               }}
             >
-              {newsItems?.map((news, index) => (
+              {
+              newsItems &&
+              newsItems.map((news, index) => (
                 <SwiperSlide key={index}>
                   <div className="news-card">
                     <img
@@ -73,7 +81,7 @@ export function CardNews() {
                         }}
                       />
 
-                      <button className="news-button">Подробнее</button>
+                      <button onClick={() => navigate(`/news-detail/${news.id}`)} className="news-button">{t("More")}              </button>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -81,7 +89,9 @@ export function CardNews() {
             </Swiper>
           ) : (
             <>
-              {itemsToShow?.map((news, index) => (
+              {
+              itemsToShow &&
+              [...itemsToShow].reverse().slice(0, 8).map((news, index) => (
                 <div className="news-card" key={index}>
                   <img
                     src={news.image}
@@ -98,7 +108,7 @@ export function CardNews() {
                             : news.description,
                       }}
                     />
-                    <button className="news-button">Подробнее</button>
+                    <button onClick={() => navigate(`/news-detail/${news.id}`)} className="news-button">Подробнее</button>
                   </div>
                 </div>
               ))}

@@ -1,14 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProjects } from "../../../app/store/reducers/projectCategorySlice"; 
-import { CardProjects } from "../../../features"; 
+import { fetchProjects } from "../../../app/store/reducers/projectCategorySlice";
+import { CardProjects } from "../../../features";
+import { fetchProjectBanner } from "../../../app/store/reducers/projectBanner";
 
 export const MainProjects = () => {
   const dispatch = useDispatch();
   const { projects, loading, error } = useSelector((state) => state.project);
+  const { data } = useSelector((state) => state.projectBanner);
 
   useEffect(() => {
     dispatch(fetchProjects());
+    dispatch(fetchProjectBanner());
+
   }, [dispatch]);
 
   if (loading) return <div>Loading...</div>;
@@ -22,7 +26,7 @@ export const MainProjects = () => {
   }
   return (
     <div className="container">
-      <h1 className="projects-main-title">ОСНОВНЫЕ ПРОЕКТЫ</h1>
+      <h1 className="projects-main-title">{data?.title_2}</h1>
       <div className="projects-grid">
         {projects.map((item, index) => (
           <CardProjects

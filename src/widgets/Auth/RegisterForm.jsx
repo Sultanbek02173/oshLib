@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/store/reducers/auth/auth";
 import { eventHandler } from "../../shared/utils/eventHandlers";
 import { getCategory } from "../../app/store/reducers/auth/authThunks";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm = ({ onSubmit }) => {
   const { 0: state, 1: setState } = useState({
@@ -17,6 +18,7 @@ const RegisterForm = ({ onSubmit }) => {
     password2: "",
   });
   const [agree, setAgree] = useState(false);
+  const { t } = useTranslation();
 
   const { category, error } = useAuth();
 
@@ -61,7 +63,9 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">ФИО</p>
+            <p className="register__form-label">
+              {t("FullName")}
+            </p>
           )}
           <input
             type="text"
@@ -72,14 +76,14 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <p className="register__form-label">Пол</p>
+          <p className="register__form-label">{t("gender")}</p>
           <select
             name="gender"
             className="register__form-input"
             onChange={onChange}
           >
-            <option value="1">Мужской</option>
-            <option value="2">Жеснкий</option>
+            <option value="1">{t("male")}</option>
+            <option value="2">{t("female")}</option>
           </select>
           {/* <input
             type="text"
@@ -91,7 +95,7 @@ const RegisterForm = ({ onSubmit }) => {
       </div>
       <div className="register__form-row">
         <div>
-          <p className="register__form-label">Дата рождение</p>
+          <p className="register__form-label">{t("dateOfBirth")}</p>
 
           <input
             type="date"
@@ -101,7 +105,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <p className="register__form-label">Категорий</p>
+          <p className="register__form-label">{t("category")}</p>
           <select
             name="category"
             className="register__form-input"
@@ -116,12 +120,7 @@ const RegisterForm = ({ onSubmit }) => {
               );
             })}
           </select>
-          {/* <input
-            type="text"
-            className="register__form-input"
-            onChange={onChange}
-            name="category"
-          /> */}
+
         </div>
       </div>
       <div className="register__form-row">
@@ -131,7 +130,7 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">Эл. почта</p>
+            <p className="register__form-label">{t("mail")}</p>
           )}
           <input
             type="text"
@@ -147,7 +146,7 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">Телефон</p>
+            <p className="register__form-label">{t("tel")}</p>
           )}
           <input
             type="text"
@@ -167,7 +166,7 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">Пароль</p>
+            <p className="register__form-label">{t("pass")}</p>
           )}
           <input
             type="text"
@@ -182,7 +181,7 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">Повторите Пароль</p>
+            <p className="register__form-label">{t("pass2")}</p>
           )}
           <input
             type="text"
@@ -198,16 +197,13 @@ const RegisterForm = ({ onSubmit }) => {
           checked={agree}
           onChange={(e) => setAgree(e.target.checked)}
         />
-        <p>
-          Создавая учетную запись, вы соглашаетесь с нашими <br /> Условиями
-          использования.
-        </p>
+        <p>{t("TermsOfUse")}</p>
       </div>
-      <button className="register__form-submit">Регистрация</button>
+      <button className="register__form-submit">{t("regBtn")}</button>
       <div className="login__form-row">
-        <p className="login__form-no">У вас есть учетная запись?</p>
+        <p className="login__form-no">{t("doHaveAcc")}</p>
         <Link to={"/login"} className="login__form-register">
-          Войти в аккаунт
+          {t("loginInAcc")}
         </Link>
       </div>
     </form>

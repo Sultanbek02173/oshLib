@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { libraryPayTypeFetch } from '../../../app/store/reducers/librarySupport';
+import { libraryPayTypeFetch, librarySupportFetch } from '../../../app/store/reducers/librarySupport';
 import './SupportPayment.scss';
 
 export function SupportPayment() {
     const dispatch = useDispatch();
-    const { payType } = useSelector((state) => state.librarySupport); 
+
+    const { payType, data: titleData } = useSelector((state) => state.librarySupport);
     const [selectedPayment, setSelectedPayment] = useState(null);
 
     useEffect(() => {
         dispatch(libraryPayTypeFetch());
+        dispatch(librarySupportFetch());
     }, [dispatch]);
 
     const handleCloseQR = () => {
@@ -25,7 +27,9 @@ export function SupportPayment() {
     return (
         <div className={`container ${selectedPayment ? 'blurred' : ''}`}>
             <div className="payment">
-                <h1 className="title_payment">СПОСОБЫ ОПЛАТЫ</h1>
+                <h1 className="title_payment">
+                    {titleData?.title_3 || 'СПОСОБЫ ОПЛАТЫ'}
+                </h1>
                 <div className="block_payment">
                     {payType.map((item) => (
                         <div
@@ -48,7 +52,9 @@ export function SupportPayment() {
                         alt="QR Code"
                         onClick={(e) => e.stopPropagation()}
                     />
-                    <button className="qr_button fade-in" onClick={handlePayment}>Оплатить</button>
+                    <button className="qr_button fade-in" onClick={handlePayment}>
+                        Оплатить
+                    </button>
                 </div>
             )}
         </div>

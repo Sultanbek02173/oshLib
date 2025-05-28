@@ -10,10 +10,12 @@ class StoreService {
     return response.data;
   }
   async getProjectData() {
-
     const response = await instance.get("/project/main-projects/");
     return response.data;
-
+  }
+  async getRegLogData() {
+    const response = await instance.get("/base/Register_login/");
+    return response.data;
   }
 
   async getReaderData() {
@@ -56,6 +58,11 @@ class StoreService {
   }
   async getServicesBannerData() {
     const response = await instance.get("/services/header/");
+    return response.data;
+  }
+
+  async getServicesBasicData() {
+    const response = await instance.get("/services/services/");
     return response.data;
   }
 

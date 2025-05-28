@@ -2,7 +2,16 @@ import { useLocation } from "react-router-dom";
 import "./cardBook.scss";
 import React from "react";
 
-export const CardBook = ({ image, author, description, title, openUrl, downloadUrl }) => {
+export const CardBook = ({ 
+  image, 
+  author, 
+  description, 
+  title, 
+  openUrl, 
+  downloadUrl,
+  openModal,
+  file
+}) => {
   const { path } = useLocation();
   return (
     <div className="cardBook">
@@ -24,7 +33,7 @@ export const CardBook = ({ image, author, description, title, openUrl, downloadU
         <div className="cardBook_btn">
           {
             openUrl && (
-              <button className="cardBook_btn_read"><a target="_blank" href={openUrl}>читать</a></button>
+              <button onClick={() => {openModal(downloadUrl)}} className="cardBook_btn_read">читать</button>
             )
           }
           {

@@ -1,65 +1,74 @@
 .services_books-enemy {
-    border-radius: 12px 12px 12px 12px;
-    margin-top: 20px;
-    color: aliceblue;
-    transition: none !important; 
-    cursor: pointer;
+  border-radius: 12px 12px 12px 12px;
+  margin-top: 20px;
+  color: aliceblue;
+  transition: none !important;
+  cursor: pointer;
 }
 
 .services_btn {
-    background-color: #105B60;
-    border: none;
-    float: right;
-    color: rgb(255, 255, 255);
-    font-size: 25px;
+  background-color: #105b60;
+  border: none;
+  float: right;
+  color: rgb(255, 255, 255);
+  font-size: 25px;
 }
 
 .services_title_block {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .services_id {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .services_title {
-    max-width: 500px;
-    margin: 0 auto;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .services_block {
-    transition: none !important; 
+  transition: none !important;
+  padding: 10px;
 }
 
 .services-text {
+  text-align: center;
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+  // width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.services_books-enemy {
+  background-color: #105b60;
+  width: 1319px;
+  padding: 12px;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 950px) {
+  .services_title {
     text-align: center;
-    display: flex;
-    color: #ffffff;
-    align-items: center;
+    width: 220px;
     margin: 0 auto;
-    width: 80%;
-    padding: 10px;
+    font-size: 20px;
+    padding: 20px;
+  }
 }
 
-@media screen and (max-width: 1450px) {
-    .services_title {
-         
-        margin: 0 auto;
-         
-    }
-    
-     
-}
-
-@media screen and (max-width: 380px) {
-
-    .services_title {
-        width: 220px;
-        margin: 0 auto;
-        font-size: 15px;
-    }
-    .services_block {
-        width: 200000%;
-    }
+@media screen and (max-width: 380px) {                          
+  .services_title {
+    text-align: center;
+    width: 220px;
+    margin: 0 auto;
+    font-size: 18px;
+    padding: 20px;
+  }
+  .services_block {
+  }
 }

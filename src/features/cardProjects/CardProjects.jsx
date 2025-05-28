@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import "./cardProjects.scss";
 import truncate from 'truncate-html';
+import { useTranslation } from "react-i18next";
 
 
 export const CardProjects = ({ image, title, description, id }) => {
-  
+      const { t } = useTranslation();
+
   const truncatedHTML = truncate(description, 350, { byWords: false });
   return (
     <div className="projects container">
@@ -27,8 +29,7 @@ export const CardProjects = ({ image, title, description, id }) => {
             </div>
             <Link to={`/project-detail/${id}`}>
               <button className="projects-grid-items-text-button">
-                Подробнее
-              </button>
+{t("More")}              </button>
             </Link>
           </div>
         </div>

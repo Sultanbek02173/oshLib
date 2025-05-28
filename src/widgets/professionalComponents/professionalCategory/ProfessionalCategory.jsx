@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import './professionalCategory.scss';
 
 export const ProfessionalCategory = ({ title, description, links }) => {
@@ -10,6 +11,7 @@ export const ProfessionalCategory = ({ title, description, links }) => {
       return false;
     }
   };
+  const { t } = useTranslation();
 
   return (
     <div className="container">
@@ -28,9 +30,10 @@ export const ProfessionalCategory = ({ title, description, links }) => {
                 className="professional-button"
                 aria-label={`Читать больше о ${title}`}
               >
-                ЧИТАТЬ
+                            {t("read")}
+
               </button>
-            </a>
+            </a>  
           )}
         </div>
       </div>

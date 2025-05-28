@@ -5,6 +5,7 @@ import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 import { CardBook } from '../../../features/cardBook/CardBook';
 import { fetchBookElectronic } from '../../../app/store/reducers/bookElectronic';
+import { ReadBookModal } from '../../../entities';
 
 export const ElectronicSearch = () => {
     const dispatch = useDispatch();
@@ -16,12 +17,18 @@ export const ElectronicSearch = () => {
     const [activeFilter, setActiveFilter] = useState('all');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [visibleCards, setVisibleCards] = useState(5);
+    const [open, setOpen] = useState(false);
+    const [book, setBook] = useState();
+
+    const openModal = (book) => {
+        setBook(book);
+        setOpen(!open);
+    }
 
     useEffect(() => {
         dispatch(fetchBookElectronic());
     }, [dispatch]);
-
-   
+    
     const popularityThreshold = 10;
 
     const filteredCards = books?.filter((card) => {
@@ -45,6 +52,9 @@ export const ElectronicSearch = () => {
     const toggleModal = () => setIsMenuOpen(!isMenuOpen);
     const loadMoreCards = () => setVisibleCards(filteredCards.length);
     const hideCards = () => setVisibleCards(5);
+
+    console.log(books);
+    
     
     return (
         <div className="electronicSearch container">
@@ -138,6 +148,7 @@ export const ElectronicSearch = () => {
                         title={card.title}
                         openUrl={card.open_url}
                         downloadUrl={card.download_url}
+                        openModal={openModal}
                     />
                 ))}
 
@@ -154,6 +165,8 @@ export const ElectronicSearch = () => {
                     )}
                 </div>
             </div>
+
+            <ReadBookModal open={open} setOpen={setOpen} book={book}/>
         </div>
     );
 };

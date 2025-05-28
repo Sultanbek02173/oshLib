@@ -1,9 +1,14 @@
 import LoginForm from "../../widgets/Auth/LoginForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../app/store/reducers/auth/authThunks";
+import { regLogFetch } from "../../app/store/reducers/regLogSlice";
+import { useEffect } from "react";
 import "./Login.scss";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const onSubmit = async (credentials) => {
@@ -15,28 +20,32 @@ const Login = () => {
     }
   };
 
+  const { data } = useSelector((state) => state.regLog);
+
+  useEffect(() => {
+    dispatch(regLogFetch());
+  }, [dispatch]);
+
   return (
     <section className="login">
       <div className="container">
         <div className="row">
           <div className="col-6">
             <div className="login__first">
-              <h2 className="login__first-title">Добро Пожаловать </h2>
+              <h2 className="login__first-title">{data?.title_log}</h2>
               <p className="login__first-subtitle">
                 Библиотека имени Токтогула Сатылганова
               </p>
               <p className="login__first-description">
-                в крупнейшую библиотеку Кыргызстана – центр культуры, истории и
-                образования. Получите доступ к тысячам книг, архивных материалов
-                и современных цифровых ресурсов.
+              {data?.description_log}
               </p>
             </div>
           </div>
           <div className="col-6">
             <div className="login__second">
-              <h2 className="login__second-title">Войти</h2>
+              <h2 className="login__second-title">{t("login")}</h2>
               <p className="login__second-subtitle">
-                Пожалуйста, введите свой адрес электронной почты и пароль
+                {t("enterAdres")}
               </p>
               <LoginForm onSubmit={onSubmit} />
             </div>

@@ -18,14 +18,22 @@ export const fetchServicesBannerData = createAsyncThunk(
   }
 );
 
+export const fetchServicesBasicData = createAsyncThunk(
+  "services/fetchServicesBasicData",
+  async () => {
+    const response = await StoreService.getServicesBasicData();
+    return response;
+  }
+);
 const servicesSlice = createSlice({
   name: "services",
   initialState: {
-    data: [],           
-    status: "idle",     
+    data: [],
+    baner: [],
+    basic: [],
+    status: "idle",
     error: null,
-    banner: {},
-    
+  
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -50,6 +58,18 @@ const servicesSlice = createSlice({
         state.banner = action.payload;
       })
       .addCase(fetchServicesBannerData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(fetchServicesBasicData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchServicesBasicData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.basic = action.payload;
+      })
+      .addCase(fetchServicesBasicData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

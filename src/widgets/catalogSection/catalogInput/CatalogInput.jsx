@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchServicesData, useCatalog } from "../../../app/store/reducers/catalogSlice";
+import {
+  fetchServicesData,
+  useCatalog,
+} from "../../../app/store/reducers/catalogSlice";
 import { Cards } from "../cards/Cards";
 import { IoMdClose } from "react-icons/io";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import "./catalogInput.scss";
+import { useTranslation } from "react-i18next";
 
 const MOBILE_BREAKPOINT = 768;
 
-const normalizeString = (str) => (typeof str === "string" ? str.toLowerCase().trim() : "");
+const normalizeString = (str) =>
+  typeof str === "string" ? str.toLowerCase().trim() : "";
 
 const filterItems = (items, { author, title, word, showPopular }) => {
   return items.filter(
@@ -23,11 +28,14 @@ const filterItems = (items, { author, title, word, showPopular }) => {
 export const CatalogInput = () => {
   const dispatch = useDispatch();
   const { data } = useCatalog();
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth <= MOBILE_BREAKPOINT
+  );
   const [filters, setFilters] = useState({ author: "", title: "", word: "" });
   const [showPopular, setShowPopular] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,7 +77,7 @@ export const CatalogInput = () => {
   const renderInput = (placeholder, field) => (
     <input
       type="text"
-      placeholder={placeholder}
+      placeholder={t(placeholder)}
       value={filters[field]}
       onChange={handleInputChange(field)}
       className="input1_text2"
@@ -77,7 +85,10 @@ export const CatalogInput = () => {
   );
 
   const renderTableRow = (item, index) => (
-    <tr key={`${item.id}-${index}`} className="parent__catalog-body-table-body-tr">
+    <tr
+      key={`${item.id}-${index}`}
+      className="parent__catalog-body-table-body-tr"
+    >
       <td className="parent__catalog-body-table-body-tr-td">{item.author}</td>
       <td className="parent__catalog-body-table-body-tr-td">{item.title}</td>
       <td className="parent__catalog-body-table-body-tr-td">{item.note}</td>
@@ -86,7 +97,7 @@ export const CatalogInput = () => {
 
   return (
     <main className="container">
-      <h2 className="main__title">каталог</h2>
+      <h2 className="main__title">{t("catalog")}</h2>
       <div className="catalog">
         <section className="parent__catalog-header">
           <div className="parent__catalog-header-wrap">
@@ -94,24 +105,32 @@ export const CatalogInput = () => {
               <div className="electronicSearch_filters_btns">
                 <div className="electronicSearch_filters_btn">
                   <button
-                    className={!showPopular ? "electronicSearch_filters_btn_allactive" : "electronicSearch_filters_btn_all"}
+                    className={
+                      !showPopular
+                        ? "electronicSearch_filters_btn_allactive"
+                        : "electronicSearch_filters_btn_all"
+                    }
                     onClick={() => setShowPopular(false)}
                   >
-                    Все
+                    {t("all")}
                   </button>
                   <button
-                    className={showPopular ? "electronicSearch_filters_btn_popularActive" : "electronicSearch_filters_btn_popular"}
+                    className={
+                      showPopular
+                        ? "electronicSearch_filters_btn_popularActive"
+                        : "electronicSearch_filters_btn_popular"
+                    }
                     onClick={() => setShowPopular(true)}
                   >
-                    Популярные
+                    {t("popular")}
                   </button>
                 </div>
               </div>
               {!isMobile && (
                 <div className="parent__catalog-header-wrapper">
-                  {renderInput("Автор", "author")}
-                  {renderInput("Название документа", "title")}
-                  {renderInput("Ключевое слово", "word")}
+                  {renderInput("author", "author")}
+                  {renderInput("title", "title")}
+                  {renderInput("word2", "word2")}
                 </div>
               )}
               {isMobile && (
@@ -131,13 +150,13 @@ export const CatalogInput = () => {
               <button onClick={toggleModal}>
                 <IoMdClose />
               </button>
-              <h2 className="modal_content-title">Расширенный поиск</h2>
+              <h2 className="modal_content-title">{t("search")}</h2>
               {renderInput("Автор", "author")}
-              {renderInput("Название документа", "title")}
-              {renderInput("Ключевое слово", "word")}
+              {renderInput("title", "title")}
+              {renderInput("word2", "word2")}
             </div>
           </div>
-        )}
+        )}  
 
         {isMobile ? (
           <Cards items={filteredItems} />
@@ -146,9 +165,15 @@ export const CatalogInput = () => {
             <table className="parent__catalog-body-table">
               <thead className="parent__catalog-body-table-head">
                 <tr className="parent__catalog-body-table-head-tr">
-                  <td className="parent__catalog-body-table-head-tr-td">Автор</td>
-                  <td className="parent__catalog-body-table-head-tr-td">Название</td>
-                  <td className="parent__catalog-body-table-head-tr-td">Кл. слово</td>
+                  <td className="parent__catalog-body-table-head-tr-td">
+                    {t("author")}
+                  </td>
+                  <td className="parent__catalog-body-table-head-tr-td">
+                    {t("name")}
+                  </td>
+                  <td className="parent__catalog-body-table-head-tr-td">
+                    {t("word").toUpperCase()}
+                  </td>
                 </tr>
               </thead>
               <tbody className="parent__catalog-body-table-body">
@@ -156,8 +181,11 @@ export const CatalogInput = () => {
                   filteredItems.map((item, i) => renderTableRow(item, i))
                 ) : (
                   <tr className="parent__catalog-body-table-empty">
-                    <td colSpan={3} className="parent__catalog-body-table-empty-td">
-                      Нет результатов
+                    <td
+                      colSpan={3}
+                      className="parent__catalog-body-table-empty-td"
+                    >
+                     {t("result")}
                     </td>
                   </tr>
                 )}

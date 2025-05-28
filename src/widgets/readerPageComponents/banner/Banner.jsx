@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { readerFetch } from '../../../app/store/reducers/readerSlice';
 import { useSelector } from 'react-redux';
+import { useTranslation } from "react-i18next";
 
 
 export const Banner = () => {
+    const { t } = useTranslation();
 
     const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ export const Banner = () => {
                         <h1 className='banner_text_title'>{item.title}</h1>
                         <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                         <button className='banner_text_btn'>
-                            <Link to={item.links}>Подробнее</Link>
+                            <Link to="/about">{t("More")}</Link>
                         </button>
                     </div>
 

@@ -3,6 +3,8 @@ import { ProfessionalCategory } from "../../widgets/professionalComponents/profe
 import { ProfessionalBaner } from "../../widgets/professionalComponents/professionalBaner/ProfessionalBaner";
 import { ProfessionalSearch } from "../../widgets/professionalComponents/professionalSearch/ProfessionalSearch";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 import { typeativityFetch } from "../../app/store/reducers/typeativitySlice";
 import { proactivityFetch } from "../../app/store/reducers/proactivitySlice";
 import "./professionalPage.scss";
@@ -11,6 +13,7 @@ export const ProfessionalPage = () => {
   const [activeTab, setActiveTab] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const typeActivity = useSelector((state) => state.type_activity) || {};
   const {
@@ -99,7 +102,9 @@ export const ProfessionalPage = () => {
             </div>
           </div>
         ) : isNothingFound ? (
-          <div className="nothing-found">Ничего не найдено</div>
+          <div className="nothing-found">
+            {t("no_data")}
+            </div>
         ) : isNoDataInTab ? (
           null
         ) : (

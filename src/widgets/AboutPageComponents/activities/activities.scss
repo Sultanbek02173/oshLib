@@ -29,10 +29,11 @@
             &-description {
                 font-family: Montserrat;
                 font-size: 18px;
+                height: 85%;
             }
 
             &-button {
-                margin-top: auto;
+                margin-top: 6%;
                 margin-bottom: 10px;
                 background-color: white;
                 font-family: SF Pro Display;
@@ -42,79 +43,79 @@
                 width: 100%;
                 padding: 12px 15px;
                 border: none;
+                cursor: pointer;
             }
         }
     }
 }
 
-// @media screen and (max-width: 1200px) {
-//     .activities-container-cards-card-description {
-//         font-size: 14px;
-//     }
+@media screen and (max-width: 1200px) {
+    .activities-container-cards-card-description {
+        font-size: 14px;
+    }
 
-//     .activities-container-cards-card-title {
-//         font-size: 20px;
-//     }
+    .activities-container-cards-card-title {
+        font-size: 20px;
+    }
 
-//     .activities-container-cards {
-//         width: 100%;
-//     }
+    .activities-container-cards {
+        width: 100%;
+    }
 
 
-// }
+}
 
-// @media screen and (max-width: 992px) {
-//     .activities-container-cards-card-description {
-//         font-size: 20px;
-//     }
+@media screen and (max-width: 992px) {
+    .activities-container-cards-card-description {
+        font-size: 20px;
+    }
 
-//     .activities-container {
-//         margin-top: 180px;
-//     }
+    .activities-container {
+        margin-top: 180px;
+    }
 
-//     .activities-container-cards {
-//         width: 101%;
-//         flex-wrap: wrap;
-//     }
+    .activities-container-cards {
+        width: 101%;
+        flex-wrap: wrap;
+    }
 
-//     .activities-container-cards-card {
-//         width: 48.5%;
-//     }
+    .activities-container-cards-card {
+        width: 48.5%;
+    }
 
-//     .third-descritption {
-//         margin-top: 17%;
-//     }
+    .third-descritption {
+        margin-top: 17%;
+    }
 
-//     .activities-container-cards-card-button {}
-// }
+}
 
-// @media screen and (max-width: 768px) {
-//     .activities-container-cards-card-description {
-//         font-size: 18px;
-//         margin-top: 5%;
-//         height: 80%;
-//     }
+@media screen and (max-width: 768px) {
+    .activities-container-cards-card-description {
+        font-size: 18px;
+        margin-top: 5%;
+        height: 80%;
+    }
 
-//     .activities-container-cards-card-button {
-//         margin-top: 8%;
-//     }
+    .activities-container-cards-card-button {
+        margin-top: 8%;
+    }
 
-//     .activities-container {
-//         margin-top: 180px;
-//     }
+    .activities-container {
+        margin-top: 180px;
+    }
 
-//     .activities-container-cards {
-//         width: 100%;
-//         flex-wrap: wrap;
-//     }
+    .activities-container-cards {
+        width: 100%;
+        flex-wrap: wrap;
+    }
 
-//     .activities-container-cards-card {
-//         width: 48.15%;
-//     }
+    .activities-container-cards-card {
+        width: 48.15%;
+    }
 
-//     .third-descritption {
-//     }
-// }
+    .third-descritption {
+    }
+}
 
 @media screen and (max-width: 576px) {
     .activities-container-cards-card-description {

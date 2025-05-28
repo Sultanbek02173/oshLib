@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import "./cardAfisha.scss";
+import { useTranslation } from "react-i18next";
 
 export const CardAfisha = ({
   id,
@@ -11,6 +12,8 @@ export const CardAfisha = ({
   tablet,
   link,
 }) => {
+      const { t } = useTranslation();
+  
   return (
     <div className="container-card__parent">
       <div className="container-card__parent-content">
@@ -42,15 +45,13 @@ export const CardAfisha = ({
       ></p>
       {link ? (
         <a className="container-card__parent-btn" href={link} target="_blank">
-          Подробнее
-        </a>
+{t("More")}        </a>
       ) : (
         <Link
           className="container-card__parent-btn"
           to={`/afisha-detail/${id}`}
         >
-          Подробнее
-        </Link>
+{t("More")}        </Link>
       )}
     </div>
   );

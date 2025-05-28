@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/store/reducers/auth/auth";
 import { eventHandler } from "../../shared/utils/eventHandlers";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ onSubmit }) => {
+  const { t } = useTranslation();
   const { 0: state, 1: setState } = useState({
     email: "",
     password: "",
@@ -39,7 +41,7 @@ const LoginForm = ({ onSubmit }) => {
       {!state.email.trim() && error?.email ? (
         <p className="register__form-error">{error.email[0]}</p>
       ) : (
-        <p className="login__form-label">Почта</p>
+        <p className="login__form-label">{t("mail")}</p>
       )}
 
       <input
@@ -52,7 +54,7 @@ const LoginForm = ({ onSubmit }) => {
       {!state.password.trim() && error?.password ? (
         <p className="register__form-error">{error.password[0]}</p>
       ) : (
-        <p className="login__form-label">Пароль</p>
+        <p className="login__form-label">{t("pass")}</p>
       )}
 
       <input
@@ -62,15 +64,15 @@ const LoginForm = ({ onSubmit }) => {
         name="password"
       />
       <Link className="login__form-forgot" to={"/forgot"}>
-        Забыл пароль
+        {t("ForgotPass")}
       </Link>
-      <button className="register__form-submit">Войти</button>
+      <button className="register__form-submit">{t("login")}</button>
       <div className="login__form-row">
-        <p className="login__form-no">У вас нет учетной записи?</p>
+        <p className="login__form-no">{t("regAcc")}</p>
         <Link to={"/register"} className="login__form-register">
-          Зарегистрироваться
+          {t("reg")}
         </Link>
-        <button onClick={() => nav(-1)} className="login__form-back">Назад</button>
+        <button onClick={() => nav(-1)} className="login__form-back">{t("escape")}</button>
       </div>
 
     </form>
