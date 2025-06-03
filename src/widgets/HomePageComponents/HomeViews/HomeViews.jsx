@@ -13,40 +13,41 @@ export function HomeViews({ mobile }) {
   useEffect(() => {
     dispatch(getCollection());
   }, [dispatch]);
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="container">
       <div className="home-views">
         <div className="content">
-          {
-          collection &&
-          collection.slice(0, 1).map((item) => (
-            <React.Fragment key={item.id}>
-              <div className="video-wrapper">
-                <ReactPlayer
-                  url={item.video}
-                  controls
-                  width="100%"
-                  height="auto"
-                  className="react-player"
-                />
-              </div>
-              <div className="text-block">
-                <h3>{item.title}</h3>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: mobile
-                      ? item.description.substr(0, 200).trim() + "..."
-                      : item.description.length > 150
-                      ? item.description.substr(0, 500).trim() + "..."
-                      : item.description,
-                  }}
-                />
-                <a target="_blank" href={item.link}><button className="details-button">{t("More")}</button></a>
-              </div>
-            </React.Fragment>
-          ))}
+          {collection &&
+            collection?.slice(0, 1).map((item) => (
+              <React.Fragment key={item.id}>
+                <div className="video-wrapper">
+                  <ReactPlayer
+                    url={item.video}
+                    controls
+                    width="100%"
+                    height="auto"
+                    className="react-player"
+                  />
+                </div>
+                <div className="text-block">
+                  <h3>{item.title}</h3>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: mobile
+                        ? item.description.substr(0, 200).trim() + "..."
+                        : item.description.length > 150
+                        ? item.description.substr(0, 500).trim() + "..."
+                        : item.description,
+                    }}
+                  />
+                  <a target="_blank" href={item.link}>
+                    <button className="details-button">{t("More")}</button>
+                  </a>
+                </div>
+              </React.Fragment>
+            ))}
         </div>
       </div>
     </div>

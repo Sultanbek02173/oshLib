@@ -32,18 +32,20 @@
     }
 
     &_name {
-      font-family: SF Pro Display;
+      font-family: Kino;
       font-weight: 400;
-      font-size: 18px;
-      text-transform: uppercase;
-
-      color: #fff;
+      font-size: 16.9px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #105b60;
     }
 
     &_author {
       font-family: SF Pro Display;
       font-weight: 500;
       font-size: 18px;
+      line-height: 100%;
+      letter-spacing: 0%;
       color: #fff;
     }
 

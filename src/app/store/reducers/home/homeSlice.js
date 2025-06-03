@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { doSearch, getBooksRating, getCatalogs, getCollection, getReadingRating } from "./homeThunks";
+import {
+  doSearch,
+  getBooksRating,
+  getCatalogs,
+  getCollection,
+  getReadingRating,
+  getHomeTitles,
+} from "./homeThunks";
 import { useSelector } from "react-redux";
 
 const initialState = {
@@ -9,6 +16,7 @@ const initialState = {
   search: [],
   loading: false,
   catalogs: [],
+  ratingTitles: []
 };
 
 const homeSlice = createSlice({
@@ -17,7 +25,7 @@ const homeSlice = createSlice({
   reducers: {
     clearSearch(state) {
       state.search = [];
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -71,10 +79,20 @@ const homeSlice = createSlice({
       })
       .addCase(doSearch.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(getHomeTitles.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getHomeTitles.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.ratingTitles = payload;
+      })
+      .addCase(getHomeTitles.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
 
-export const {clearSearch} = homeSlice.actions;
+export const { clearSearch } = homeSlice.actions;
 export const useHome = () => useSelector((state) => state.home);
 export default homeSlice.reducer;

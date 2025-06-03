@@ -2,15 +2,15 @@ import { useLocation } from "react-router-dom";
 import "./cardBook.scss";
 import React from "react";
 
-export const CardBook = ({ 
-  image, 
-  author, 
-  description, 
-  title, 
-  openUrl, 
+export const CardBook = ({
+  image,
+  author,
+  description,
+  title,
+  openUrl,
   downloadUrl,
   openModal,
-  file
+  id,
 }) => {
   const { path } = useLocation();
   return (
@@ -20,27 +20,30 @@ export const CardBook = ({
           <img src={image} alt="" />
         </div>
         <div className="cardBook_text">
-          <h2 className="cardBook_text_name">
-            {title}
-          </h2>
-          <h4 className="cardBook_text_author">
-            {author}
-          </h4>
+          <h2 className="cardBook_text_name">{title}</h2>
+          <h4 className="cardBook_text_author">{author}</h4>
           <div className="cardBook_text_description">
             <p dangerouslySetInnerHTML={{ __html: description }}></p>
           </div>
         </div>
         <div className="cardBook_btn">
-          {
-            openUrl && (
-              <button onClick={() => {openModal(downloadUrl)}} className="cardBook_btn_read">читать</button>
-            )
-          }
-          {
-            downloadUrl && (
-              <button className="cardBook_btn_download"><a target="_blank" href={downloadUrl}>скачать</a></button>
-            )
-          }
+          {openUrl && (
+            <button
+              onClick={() => {
+                openModal(downloadUrl, id);
+              }}
+              className="cardBook_btn_read"
+            >
+              читать
+            </button>
+          )}
+          {downloadUrl && (
+            <button className="cardBook_btn_download">
+              <a target="_blank" href={downloadUrl}>
+                скачать
+              </a>
+            </button>
+          )}
         </div>
       </div>
 
@@ -64,6 +67,24 @@ export const CardBook = ({
               <button className="cardBook_btn_read">читать</button>
               <button className="cardBook_btn_download">скачать</button>
             </React.Fragment>
+          )}
+
+          {openUrl && (
+            <button
+              onClick={() => {
+                openModal(downloadUrl);
+              }}
+              className="cardBook_btn_read"
+            >
+              читать
+            </button>
+          )}
+          {downloadUrl && (
+            <button className="cardBook_btn_download">
+              <a target="_blank" href={downloadUrl}>
+                скачать
+              </a>
+            </button>
           )}
         </div>
       </div>

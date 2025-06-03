@@ -9,6 +9,8 @@ const ConfirmForm = ({ onSubmit }) => {
     new_password: "",
   });
   const { error } = useAuth();
+  console.log(error);
+
   const navigate = useNavigate();
   const onChange = eventHandler(setState);
   const onFormSubmit = async (e) => {
@@ -31,9 +33,7 @@ const ConfirmForm = ({ onSubmit }) => {
     <form onSubmit={onFormSubmit} className="confirm__form">
       {error?.detail && <p className="register__form-error">{error.detail}</p>}
       <div>
-        {!state.code.trim() && error?.code && (
-          <p className="register__form-error">{error.code[0]}</p>
-        )}
+        {error?.code && <p className="register__form-error">{error.code}</p>}
         <input
           type="text"
           name="code"
@@ -44,7 +44,7 @@ const ConfirmForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        {!state.new_password.trim() && error?.new_password && (
+        {error?.new_password && (
           <p className="register__form-error">{error.new_password[0]}</p>
         )}
         <input

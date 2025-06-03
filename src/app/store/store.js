@@ -1,60 +1,61 @@
-  // src/store/store.js
-  import {
-    configureStore,
-    createListenerMiddleware,
-    isAnyOf,
-  } from "@reduxjs/toolkit";
+// src/store/store.js
+import {
+  configureStore,
+  createListenerMiddleware,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 
-  import afishaSlice from "./reducers/afishaSlice";
-  import {
-    userRegister,
-    userLogin,
-    logoutUser,
-  } from "./reducers/auth/authThunks";
-  import authReducer from "./reducers/auth/auth";
-  import readerReducer from "./reducers/readerSlice";
-  import libarySupportReducer from "./reducers/librarySupport";
-  import bookElectronicReducer from "./reducers/bookElectronic";
-  import servicesReducer from "./reducers/servicesSlice";
-  import aboutReducer from "./reducers/aboutSlice";
-  import proactivityReducer from "./reducers/proactivitySlice";
-  import typeativityReducer from "./reducers/typeativitySlice";
-  import bannerReducer from "./reducers/BannerSlice";
-  import newsReducer from "./reducers/news/newsSlice";
-  import visuallyReducer from "./reducers/visually";
-  import projectSlice from "./reducers/projectSlice";
-  import projectCategorySlice from "./reducers/projectCategorySlice";
-  import homeReducer from "./reducers/home/homeSlice";
-  import projectBannerReducer from "./reducers/projectBanner";
-  import headerReducer from "./reducers/headerSlice";
-  import regLogSlice from "./reducers/regLogSlice";
-  const localStorageMiddleware = createListenerMiddleware();
-  localStorageMiddleware.startListening({
-    matcher: isAnyOf(userRegister.fulfilled, userLogin.fulfilled),
-    effect: (action, listenerApi) => {
-      const { user, login, access, refresh } = listenerApi.getState().auth;
+import aboutReducer from "./reducers/aboutSlice";
+import afishaSlice from "./reducers/afishaSlice";
+import authReducer from "./reducers/auth/auth";
+import {
+  logoutUser,
+  userLogin,
+  userRegister,
+} from "./reducers/auth/authThunks";
+import bannerReducer from "./reducers/BannerSlice";
+import bookElectronicReducer from "./reducers/bookElectronic";
+import headerReducer from "./reducers/headerSlice";
+import homeReducer from "./reducers/home/homeSlice";
+import libarySupportReducer from "./reducers/librarySupport";
+import newsReducer from "./reducers/news/newsSlice";
+import proactivityReducer from "./reducers/proactivitySlice";
+import projectBannerReducer from "./reducers/projectBanner";
+import projectCategorySlice from "./reducers/projectCategorySlice";
+import projectSlice from "./reducers/projectSlice";
+import readerReducer from "./reducers/readerSlice";
+import regLogSlice from "./reducers/regLogSlice";
+import servicesReducer from "./reducers/servicesSlice";
+import typeativityReducer from "./reducers/typeativitySlice";
+import visuallyReducer from "./reducers/visually";
+const localStorageMiddleware = createListenerMiddleware();
+localStorageMiddleware.startListening({
+  matcher: isAnyOf(userRegister.fulfilled, userLogin.fulfilled),
+  effect: (action, listenerApi) => {
+    const { user, login, access, refresh } = listenerApi.getState().auth;
 
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-        if (user.tokens) {
-          localStorage.setItem("access", user.tokens.access);
-        }
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      if (user.tokens) {
+        localStorage.setItem("access", user.tokens.access);
       }
-      if (login) localStorage.setItem("login", JSON.stringify(login));
-      if (access) localStorage.setItem("access", access);
-      if (refresh) localStorage.setItem("refresh", refresh);
-    },
-  });
+    }
+    if (login) localStorage.setItem("login", JSON.stringify(login));
+    if (access) localStorage.setItem("access", access);
 
-  localStorageMiddleware.startListening({
-    matcher: isAnyOf(logoutUser.fulfilled),
-    effect: () => {
-      localStorage.removeItem("user");
-      localStorage.removeItem("login");
-      localStorage.removeItem("access");
-      localStorage.removeItem("refresh");
-    },
-  });
+    if (refresh) localStorage.setItem("refresh", refresh);
+  },
+});
+
+localStorageMiddleware.startListening({
+  matcher: isAnyOf(logoutUser.fulfilled),
+  effect: () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("login");
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+  },
+});
 
 export const store = configureStore({
   reducer: {
@@ -75,10 +76,8 @@ export const store = configureStore({
     news: newsReducer,
     home: homeReducer,
     header: headerReducer,
-          regLog: regLogSlice,
-
+    regLog: regLogSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(localStorageMiddleware.middleware),
 });
-   

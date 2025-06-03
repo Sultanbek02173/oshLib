@@ -15,7 +15,7 @@ export const getAfishaBanner = createAsyncThunk(
   "/getAfishaBanner",
   async () => {
     try {
-      const { data } = await instance.get("afisha/afirha/");
+      const { data } = await instance.get("afisha/afisha/");
       return data;
     } catch (error) {
       console.error(error);

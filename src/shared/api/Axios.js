@@ -1,8 +1,9 @@
 import axios from "axios";
 import i18n from "../../i18n/i18n";
+import { BASE_URL } from "./constants";
 
 const instance = axios.create({
-  baseURL: `https://librarygeekspro.webtm.ru/${i18n.language}/api/v1/`,
+  baseURL: `${BASE_URL}${i18n.language}/api/v1/`,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -11,7 +12,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
   const lang = i18n.language;
-  config.baseURL = `https://librarygeekspro.webtm.ru/${lang}/api/v1/`;
+  config.baseURL = `${BASE_URL}${lang}/api/v1/`;
   return config;
 });
 

@@ -1,5 +1,4 @@
 import "./footer.scss";
-import Logo from "../../shared/image/Group 1.png";
 import Akar from "../../shared/image/static.svg";
 import Rectangle from "../../shared/image/Rectangle 986.svg";
 import { NavLink, Link } from "react-router-dom";

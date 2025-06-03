@@ -20,10 +20,13 @@ export const AfishaEvents = () => {
     dispatch(getAfishaBanner());
   }, [dispatch]);
 
+  console.log(banner);
+  
+
   return (
     <div className="card-afisha container">
         <h1 className="card-afisha__title main__title">
-  {banner[0]?.title_2}
+  {banner.title_2}
         </h1>
       <div className="card-afisha__list">
         {events.map((event, index) => (

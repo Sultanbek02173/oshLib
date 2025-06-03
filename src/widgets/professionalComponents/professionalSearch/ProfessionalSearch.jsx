@@ -1,4 +1,3 @@
-import React from "react";
 import { CiSearch } from "react-icons/ci";
 import "./professionalSearch.scss";
 import { useTranslation } from "react-i18next";

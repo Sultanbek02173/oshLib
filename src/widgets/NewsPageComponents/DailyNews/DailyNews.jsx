@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import CardDailyNews from "./../../../features/cardDailyNews/CardDailyNews";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "./DailyNews.scss"
+import "./DailyNews.scss";
 import { useDispatch } from "react-redux";
 import { getDailyNews } from "../../../app/store/reducers/news/newsThunks";
 import { useNews } from "../../../app/store/reducers/news/newsSlice";
-
+import { useTranslation } from "react-i18next";
 
 export function DailyNews() {
   const { list } = useNews();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 8;
@@ -25,7 +26,7 @@ export function DailyNews() {
 
   return (
     <div className="container DailyNews">
-    <div className="DailyNews__title">Дневные новости</div>
+      <div className="DailyNews__title">Дневные новости</div>
       <Swiper
         onSlideChange={handlePageChange}
         slidesPerView={1}
@@ -40,6 +41,7 @@ export function DailyNews() {
               {list.slice((currentPage * ITEMS_PER_PAGE) - ITEMS_PER_PAGE, (currentPage * ITEMS_PER_PAGE)).map(news => (
                 <CardDailyNews 
                   key={news.id}
+                  id={news.id}
                   img={news.image}
                   title={news.title}
                   desc={news.description}
@@ -55,8 +57,8 @@ export function DailyNews() {
           В начало
         </button>
 
-        <button 
-          onClick={() => setCurrentPage(1)} 
+        <button
+          onClick={() => setCurrentPage(1)}
           className={currentPage === 1 ? "active" : ""}
         >
           1
@@ -65,11 +67,11 @@ export function DailyNews() {
         {currentPage > 3 && <span className="dots">...</span>}
 
         {Array.from({ length: totalPages - 1 }, (_, i) => i + 1)
-          .filter(page => page !== 1 && Math.abs(page - currentPage) <= 1)
-          .map(page => (
-            <button 
-              key={page} 
-              onClick={() => setCurrentPage(page)} 
+          .filter((page) => page !== 1 && Math.abs(page - currentPage) <= 1)
+          .map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
               className={currentPage === page ? "active" : ""}
             >
               {page}
@@ -79,19 +81,19 @@ export function DailyNews() {
         {currentPage < totalPages - 2 && <span className="dots">...</span>}
 
         {totalPages > 1 && (
-          <button 
-            onClick={() => setCurrentPage(totalPages)} 
+          <button
+            onClick={() => setCurrentPage(totalPages)}
             className={currentPage === totalPages ? "active" : ""}
           >
             {totalPages}
           </button>
         )}
 
-        <button 
-          onClick={() => setCurrentPage(totalPages)} 
+        <button
+          onClick={() => setCurrentPage(totalPages)}
           disabled={currentPage === totalPages}
         >
-          В конец
+         {t("")} В конец
         </button>
       </div>
     </div>

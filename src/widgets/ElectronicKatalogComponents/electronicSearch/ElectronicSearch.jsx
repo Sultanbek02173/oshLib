@@ -19,10 +19,12 @@ export const ElectronicSearch = () => {
     const [visibleCards, setVisibleCards] = useState(5);
     const [open, setOpen] = useState(false);
     const [book, setBook] = useState();
+    const [bookId, setBookId] = useState();
 
-    const openModal = (book) => {
+    const openModal = (book, id) => {
         setBook(book);
         setOpen(!open);
+        setBookId(id)
     }
 
     useEffect(() => {
@@ -44,17 +46,11 @@ export const ElectronicSearch = () => {
         
 
         return matchesAuthor && matchesTitle && matchesKeyword;
-    }) || [];
-
-    console.log(filteredCards);
-    
+    }) || [];    
 
     const toggleModal = () => setIsMenuOpen(!isMenuOpen);
     const loadMoreCards = () => setVisibleCards(filteredCards.length);
-    const hideCards = () => setVisibleCards(5);
-
-    console.log(books);
-    
+    const hideCards = () => setVisibleCards(5);    
     
     return (
         <div className="electronicSearch container">
@@ -142,6 +138,7 @@ export const ElectronicSearch = () => {
                 {filteredCards.slice(0, visibleCards).map((card) => (
                     <CardBook
                         key={card.id}
+                        id={card.id}
                         image={card.image}
                         author={card.author}
                         description={card.description}
@@ -166,7 +163,7 @@ export const ElectronicSearch = () => {
                 </div>
             </div>
 
-            <ReadBookModal open={open} setOpen={setOpen} book={book}/>
+            <ReadBookModal bookId={bookId} open={open} setOpen={setOpen} book={book}/>
         </div>
     );
 };

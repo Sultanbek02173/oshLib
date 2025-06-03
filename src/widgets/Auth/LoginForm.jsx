@@ -16,7 +16,7 @@ const LoginForm = ({ onSubmit }) => {
   const navigate = useNavigate();
 
   const onChange = eventHandler(setState);
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -72,9 +72,10 @@ const LoginForm = ({ onSubmit }) => {
         <Link to={"/register"} className="login__form-register">
           {t("reg")}
         </Link>
-        <button onClick={() => nav(-1)} className="login__form-back">{t("escape")}</button>
+        <button onClick={() => nav(-1)} className="login__form-back">
+          {t("escape")}
+        </button>
       </div>
-
     </form>
   );
 };

@@ -25,8 +25,7 @@ export const ServicesPage = () => {
         {books.map((book, i) => (
           <Books
             i={i}
-            key={book.i}
-            id={book.id}
+            key={book.i}x     id={book.id}
             title={book.title}
             description={book.description}
             isVisible={isVisible}

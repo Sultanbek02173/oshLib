@@ -1,21 +1,20 @@
-import { Link, NavLink } from "react-router-dom";
-import "./header.scss";
-import Search from "./search/Search";
-import { FaEyeSlash, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { CiSearch } from "react-icons/ci";
+import { FaEyeSlash, FaFacebookF, FaInstagram, FaUser } from "react-icons/fa";
+import { MdOutlineLocationOn, MdOutlinePhone } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { VisuallyImpaired } from "../../entities/VisuallyImpaired/VisuallyImpaired";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getHeader } from "../../app/store/reducers/headerSlice";
+import { clearSearch, useHome } from "../../app/store/reducers/home/homeSlice";
+import { doSearch } from "../../app/store/reducers/home/homeThunks";
 import { activeMode, deactivateMode } from "../../app/store/reducers/visually";
+import { ModalReg } from "../../entities";
+import { VisuallyImpaired } from "../../entities/VisuallyImpaired/VisuallyImpaired";
+import Burger from "./burger/Burger";
+import "./header.scss";
 import HeaderNav from "./headerNav/HeaderNav";
 import Lang from "./lang/Lang";
-import { FaUser } from "react-icons/fa";
-import { MdOutlineLocationOn, MdOutlinePhone } from "react-icons/md";
-import Burger from "./burger/Burger";
-import { useState, useEffect } from "react";
-import { CiSearch } from "react-icons/ci";
-import { doSearch } from "../../app/store/reducers/home/homeThunks";
-import { clearSearch, useHome } from "../../app/store/reducers/home/homeSlice";
-import { getHeader } from "../../app/store/reducers/headerSlice";
-import { ModalReg } from "../../entities";
+import Search from "./search/Search";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,9 @@ export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const [inputValue, setInputValue] = useState({search: ''});
+  const [inputValue, setInputValue] = useState({ search: "" });
+  const token = localStorage.getItem("access");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,9 +70,13 @@ export const Header = () => {
   };
 
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-    if (isBurgerOpen) {
-      setIsBurgerOpen(false);
+    if (token) {
+      navigate("/profile");
+    } else {
+      setIsModalOpen(!isModalOpen);
+      if (isBurgerOpen) {
+        setIsBurgerOpen(false);
+      }
     }
   };
 
@@ -89,20 +94,20 @@ export const Header = () => {
     const delayDebounce = setTimeout(() => {
       if (inputValue.search.trim()) {
         dispatch(doSearch(inputValue));
-      }else{
+      } else {
         dispatch(clearSearch());
       }
-    }, 1000);    
+    }, 1000);
 
     return () => clearTimeout(delayDebounce);
-  }, [inputValue]);   
+  }, [inputValue]);
 
   const clear = () => {
     dispatch(clearSearch());
-    setInputValue({search: ''});
-  }
-  
-  const { data } = useSelector((state) => state.header);  
+    setInputValue({ search: "" });
+  };
+
+  const { data } = useSelector((state) => state.header);
 
   return (
     <div className="container">
@@ -111,57 +116,70 @@ export const Header = () => {
         <div className="header_row">
           <div className="logo">
             <Link to="/">
-              <img src={`https://librarygeekspro.webtm.ru/${data?.logo}`} alt="logo" />
+              <img
+                src={`https://librarygeekspro.webtm.ru/${data?.logo}`}
+                alt="logo"
+              />
             </Link>
           </div>
           {!isMobile ? (
             <>
               <div className="tools">
                 <div className="search_desktop">
-                  <input 
-                    type="text" 
-                    placeholder="Поиск" 
+                  <input
+                    type="text"
+                    placeholder="Поиск"
                     value={inputValue.search}
-                    onChange={(e) => setInputValue(prev => ({...prev, search: e.target.value}))}
+                    onChange={(e) =>
+                      setInputValue((prev) => ({
+                        ...prev,
+                        search: e.target.value,
+                      }))
+                    }
                   />
-                  
+
                   <button>
                     <CiSearch />
                   </button>
 
-                  {
-                    search?.results?.results.length > 0 ? (
+                  {search?.results?.results.length > 0 ? (
                     <div className="search__cont">
-                    {
-                    search.results.results.map((search, indx) => (
-                      <NavLink onClick={clear} to={`/${search.Pages}`} key={indx}>
-                        <div className="search__cont__item">
-                          {
-                            search.image && (
-                              <img src={`https://librarygeekspro.webtm.ru/${search.image}`} alt="" />
-                            )
-                          }
-                          <div>
-                          {search.title && (<h2>{search.title}</h2>)}
-                          {search.name && (<h2>{search.name}</h2>)}
-                          {
-                            search.description && (
-                              <p dangerouslySetInnerHTML={{__html:
-                              search.description.length > 15
-                              ? search.description.substr(0, 80).trim() + "..."
-                              : search.description,
-                            }}
-                              ></p>
-                            )
-                          }
+                      {search.results.results.map((search, indx) => (
+                        <NavLink
+                          onClick={clear}
+                          to={`/${search.Pages}`}
+                          key={indx}
+                        >
+                          <div className="search__cont__item">
+                            {search.image && (
+                              <img
+                                src={`https://librarygeekspro.webtm.ru/${search.image}`}
+                                alt=""
+                              />
+                            )}
+                            <div>
+                              {search.title && <h2>{search.title}</h2>}
+                              {search.name && <h2>{search.name}</h2>}
+                              {search.description && (
+                                <p
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      search.description.length > 15
+                                        ? search.description
+                                            .substr(0, 80)
+                                            .trim() + "..."
+                                        : search.description,
+                                  }}
+                                ></p>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      </NavLink>
-                    ))
-                    
-                  }
-                  </div>) : ''
-                }
+                        </NavLink>
+                      ))}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <button
                   className="header_eye"
@@ -198,13 +216,23 @@ export const Header = () => {
             <div className="header_right">
               <Lang />
               <div className="header_icon">
-                <a target="_blank" href="https://2gis.kg/osh/firm/70000001030596097"> <div className="locate">
-                  <MdOutlineLocationOn /></div></a>
-                  <a target="_blank" href={data.phone_number ? `tel:${data.phone_number}` : '#'}>
-                <div className="locate">
+                <a
+                  target="_blank"
+                  href="https://2gis.kg/osh/firm/70000001030596097"
+                >
+                  {" "}
+                  <div className="locate">
+                    <MdOutlineLocationOn />
+                  </div>
+                </a>
+                <a
+                  target="_blank"
+                  href={data.phone_number ? `tel:${data.phone_number}` : "#"}
+                >
+                  <div className="locate">
                     <MdOutlinePhone />
-                </div>
-                  </a>
+                  </div>
+                </a>
                 {data.instagram_icon && data.instagram_icon_url && (
                   <div className="locate">
                     <a
@@ -232,12 +260,11 @@ export const Header = () => {
                   <FaUser />
                 </div>
               </div>
-             
             </div>
           </div>
         )}
       </div>
-        <ModalReg
+      <ModalReg
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         isSuccessModalOpen={isSuccessModalOpen}

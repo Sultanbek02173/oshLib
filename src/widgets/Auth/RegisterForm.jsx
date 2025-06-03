@@ -5,6 +5,7 @@ import { useAuth } from "../../app/store/reducers/auth/auth";
 import { eventHandler } from "../../shared/utils/eventHandlers";
 import { getCategory } from "../../app/store/reducers/auth/authThunks";
 import { useTranslation } from "react-i18next";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const RegisterForm = ({ onSubmit }) => {
   const { 0: state, 1: setState } = useState({
@@ -63,9 +64,7 @@ const RegisterForm = ({ onSubmit }) => {
               Это поле не может быть пустым.
             </p>
           ) : (
-            <p className="register__form-label">
-              {t("FullName")}
-            </p>
+            <p className="register__form-label">{t("FullName")}</p>
           )}
           <input
             type="text"
@@ -120,7 +119,6 @@ const RegisterForm = ({ onSubmit }) => {
               );
             })}
           </select>
-
         </div>
       </div>
       <div className="register__form-row">
@@ -200,6 +198,7 @@ const RegisterForm = ({ onSubmit }) => {
         <p>{t("TermsOfUse")}</p>
       </div>
       <button className="register__form-submit">{t("regBtn")}</button>
+      <GoogleLoginButton />
       <div className="login__form-row">
         <p className="login__form-no">{t("doHaveAcc")}</p>
         <Link to={"/login"} className="login__form-register">

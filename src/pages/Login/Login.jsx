@@ -1,10 +1,10 @@
-import LoginForm from "../../widgets/Auth/LoginForm";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../app/store/reducers/auth/authThunks";
 import { regLogFetch } from "../../app/store/reducers/regLogSlice";
-import { useEffect } from "react";
+import LoginForm from "../../widgets/Auth/LoginForm";
 import "./Login.scss";
-import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -37,16 +37,14 @@ const Login = () => {
                 Библиотека имени Токтогула Сатылганова
               </p>
               <p className="login__first-description">
-              {data?.description_log}
+                {data?.description_log}
               </p>
             </div>
           </div>
           <div className="col-6">
             <div className="login__second">
               <h2 className="login__second-title">{t("login")}</h2>
-              <p className="login__second-subtitle">
-                {t("enterAdres")}
-              </p>
+              <p className="login__second-subtitle">{t("enterAdres")}</p>
               <LoginForm onSubmit={onSubmit} />
             </div>
           </div>

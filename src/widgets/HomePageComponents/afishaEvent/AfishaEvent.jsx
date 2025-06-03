@@ -17,17 +17,14 @@ export const AfishaEvent = ({ tablet, mobile }) => {
   useEffect(() => {
     dispatch(getNewsEvents());
     dispatch(getAfishaBanner());
-
   }, [dispatch]);
 
   return (
     <div className="container">
-        <h1 className="card-afisha__title main__title">
-  {banner[0]?.title_2}
-        </h1>
+      <h1 className="card-afisha__title main__title">{banner[0]?.title_2}</h1>
       <div className="card-afisha__list">
         {data &&
-          data.map((item, index) => (
+          data?.map((item, index) => (
             <CardAfisha
               id={item.id}
               tablet={tablet}

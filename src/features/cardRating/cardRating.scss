@@ -1,0 +1,227 @@
+.card__rating {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 11.5px;
+  &.active {
+    width: 50%;
+  }
+  &-images {
+    width: 100%;
+    height: 337.5px;
+    padding: 15px;
+    border-radius: 7.5px;
+    background-color: #105b60;
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
+    &-place {
+      font-family: "Kino", sans-serif;
+      font-weight: 400;
+      font-size: 33px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #105b60;
+    }
+    &-title {
+      font-family: "Kino", sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #105b60;
+    }
+    &-code {
+      font-family: "SF Pro Display";
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #105b60;
+      margin-top: 3px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card__rating {
+    width: 30%;
+    &.active {
+      width: 40%;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .card__rating {
+    width: calc(50% - 13px);
+    &:first-child {
+      width: 100%;
+    }
+    &.active {
+      width: calc(50% - 13px) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__rating {
+    width: calc(50% - 13px);
+    &-images {
+      height: 300px;
+      border-radius: 10px;
+    }
+    &:first-child {
+      width: 100%;
+    }
+    &.active {
+      width: calc(50% - 13px) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card__rating {
+    width: calc(50% - 13px);
+    &-images {
+      height: 250px;
+      border-radius: 5px;
+      padding: 8.4px;
+    }
+    &-texts {
+      &-place {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+      &-title {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+
+      }
+      &-code {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 10.53px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+    }
+    &:first-child {
+      width: 100%;
+    }
+    &.active {
+      width: calc(50% - 13px) !important;
+    }
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  .card__rating {
+    width: calc(50% - 13px);
+    &-images {
+      height: 180px;
+      border-radius: 5px;
+      padding: 8.4px;
+    }
+    &-texts {
+      &-place {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+      &-title {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+
+      }
+      &-code {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 10.53px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+    }
+    &:first-child {
+      width: 100%;
+      &-images{
+        height: 188px;
+      }
+    }
+    &.active {
+      width: calc(50% - 13px) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card__rating {
+    width: 100%;
+    &-images {
+      height: 180px;
+      border-radius: 5px;
+      padding: 8.4px;
+    }
+    &-texts {
+      &-place {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+      &-title {
+        font-family: "Kino", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+
+      }
+      &-code {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 10.53px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #105b60;
+      }
+    }
+    &:first-child {
+      width: 100%;
+      &-images{
+        height: 188px;
+      }
+    }
+    &.active {
+      width: 100% !important;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import "./cardDailyNews.scss";
-
-function CardDailyNews({ img, title, desc }) {
+import { Link } from "react-router-dom";
+ 
+function CardDailyNews({id, img, title, desc }) {
   return (
     <div className="cardDailyNews">
       <img className="cardDailyNews__img" src={img} alt={title} />
@@ -14,7 +15,9 @@ function CardDailyNews({ img, title, desc }) {
             : desc,
          }}
       ></p>
-      <div className="cardDailyNews__btn">Подробнее</div>
+      <Link to={`/news-detail/${id}`}>
+      <button className="cardDailyNews__btn">Подробнее</button>
+      </Link>
     </div>
   );
 }

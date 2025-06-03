@@ -10,7 +10,7 @@ export const CardFhdt = () => {
   const [mobile, setMobile] = useState(window.innerWidth < 460);
   const dispatch = useDispatch();
   const { catalogs } = useHome();
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getCatalogs());
@@ -34,13 +34,9 @@ export const CardFhdt = () => {
     <div className="container">
       <div className="card-fhdt__container">
         <div className="card-fhdt__list">
-          {catalogsArray.map((item, index) => {
+          {catalogsArray?.map((item, index) => {
             const linkPath =
-              index === 0
-                ? "/catalog"
-                : index === 1
-                ? "/electronic"
-                : "#"; 
+              index === 0 ? "/catalog" : index === 1 ? "/electronic" : "#";
 
             return (
               <div className="card-fhdt__item" key={item.id}>
@@ -65,7 +61,8 @@ export const CardFhdt = () => {
                     </div>
                     <div className="card-fhdt__card-content-right">
                       <Link to={linkPath} className="card-fhdt__card-button">
-{t("More")}                      </Link>
+                        {t("More")}{" "}
+                      </Link>
                     </div>
                   </div>
                 </div>

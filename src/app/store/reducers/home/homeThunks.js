@@ -38,7 +38,9 @@ export const doSearch = createAsyncThunk(
   "search/doSearch",
   async (searchParams) => {
     try {
-      const { data } = await instance.get("base/search/", {params: searchParams})      
+      const { data } = await instance.get("base/search/", {
+        params: searchParams,
+      });
       return data;
     } catch (e) {
       console.log(e);
@@ -47,14 +49,22 @@ export const doSearch = createAsyncThunk(
   }
 );
 
-export const getCatalogs = createAsyncThunk(
-  "/getCatalogs",
-  async () => {
-    try {
-      const { data } = await instance.get("base/catalogs/");
-      return data;
-    } catch (e) {
-      console.log(e);
-      throw e;
-    }
-  });
+export const getHomeTitles = createAsyncThunk("home/getTitles", async () => {
+  try {
+    const { data } = await instance("banner/titles/");
+    return data;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+});
+
+export const getCatalogs = createAsyncThunk("/getCatalogs", async () => {
+  try {
+    const { data } = await instance.get("base/catalogs/");
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+});
