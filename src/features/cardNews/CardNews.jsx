@@ -80,13 +80,17 @@ export function CardNews() {
                           }}
                         />
 
-                        <Link to={`/news-detail/${news.id}`}>
-                        </Link>
-                      <button onClick={() => navigate(`/news-detail/${news.id}`)} className="news-button">{t("More")}              </button>
+                        <Link to={`/news-detail/${news.id}`}></Link>
+                        <button
+                          onClick={() => navigate(`/news-detail/${news.id}`)}
+                          className="news-button"
+                        >
+                          {t("More")}{" "}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+                  </SwiperSlide>
+                ))}
             </Swiper>
           ) : (
             <>
@@ -96,13 +100,15 @@ export function CardNews() {
                   .slice(0, 8)
                   .map((news, index) => (
                     <div className="news-card" key={index}>
+                      <div className="news-image">
                       <img
                         src={news.image}
                         alt={news.title}
-                        className="news-image"
                       />
-                      <div className="news-content">
                         <h3>{news.title}</h3>
+
+                      </div>
+                      <div className="news-content">
                         <p
                           dangerouslySetInnerHTML={{
                             __html:

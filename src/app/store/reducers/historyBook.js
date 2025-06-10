@@ -6,10 +6,10 @@ export const historyFeych = createAsyncThunk(
   async (bookPage, { rejectWithValue }) => {
     try {
       const { data } = await instance.post("users/read-book/", bookPage, {
-         headers: { Authorization: `Bearer ${localStorage.getItem("access")}` },
+        headers: { Authorization: `Bearer ${localStorage.getItem("access")}` },
       });
-      console.log(bookPage);
-      
+      // console.log(bookPage);
+
       return data;
     } catch (e) {
       console.log(e);

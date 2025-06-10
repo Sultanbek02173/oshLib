@@ -9,7 +9,6 @@ const ConfirmForm = ({ onSubmit }) => {
     new_password: "",
   });
   const { error } = useAuth();
-  console.log(error);
 
   const navigate = useNavigate();
   const onChange = eventHandler(setState);
@@ -22,7 +21,6 @@ const ConfirmForm = ({ onSubmit }) => {
         console.log("Ошибка от сервера:", result.error);
         return;
       }
-      // console.log(result);
       alert("Успешно поменяли пароль");
       navigate("/login");
     } catch (err) {

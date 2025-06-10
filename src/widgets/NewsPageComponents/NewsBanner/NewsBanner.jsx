@@ -17,8 +17,8 @@ export const NewsBanner = () => {
       <div className="servicesBanner">
         <div className="container">
           {
-            logo && 
-          logo.map((item, indx) => {
+          logo && 
+          logo.slice(0, 1).map((item, indx) => {
             return (
               <React.Fragment key={indx}>
                 <h1 className="servicesBanner_title main__title">

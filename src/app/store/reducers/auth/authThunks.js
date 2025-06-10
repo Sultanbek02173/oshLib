@@ -135,16 +135,17 @@ export const editUserData = createAsyncThunk(
 
 export const loginWithGoogle = createAsyncThunk(
   "auth/loginWithGoogle",
-  async (token, thunkAPI) => {
+  async (token, {}) => {
     try {
-      const response = await instance.post("users/google-login/", {
-        access_token: token,
+      const response = await instance.post("users/auth/google-id-token/", {
+        id_token: token,
       });
+      // console.log("Google login response:", response.data);
 
       // Вернём JWT-токен
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data || "Login failed");
+      return rejectWithValue(err.response?.data || "Login failed");
     }
   }
 );

@@ -13,6 +13,7 @@
                 font-size: 55px;
                 margin: 0 auto;
                 font-family: Kino;
+                text-transform: uppercase;
                 width: 60%;
             }
             &-second-title{
@@ -43,18 +44,21 @@
             top: -290px;
             left: 13.5%;
             width: 9%;
+            border-radius: 50%;
         }
 
         &-second-img {
             top: -50px;
             left: 16%;
             width: 11%;
+            border-radius: 50%;
         }
 
         &-third-img {
             width: 8%;
             left: 60%;
             bottom: 280px;
+            border-radius: 50%;
         }
     }
 }

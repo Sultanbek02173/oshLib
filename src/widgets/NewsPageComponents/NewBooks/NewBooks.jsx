@@ -4,11 +4,13 @@ import "../NewsAdvertisment/newsAdvertisment.scss";
 import { useDispatch } from "react-redux";
 import { useNews } from "../../../app/store/reducers/news/newsSlice";
 import { getNewsEvents } from "../../../app/store/reducers/news/newsThunks";
+import { useTranslation } from "react-i18next";
 
 export const NewBooks = () => {
 
   const dispatch = useDispatch();
   const { newEvents: events } = useNews();
+  const {t} = useTranslation();
 
   useEffect(() => {
     dispatch(getNewsEvents());
@@ -17,7 +19,7 @@ export const NewBooks = () => {
   return (
     <div>
       <div className="cardAdvertisment container">
-        <h1 className="cardAdvertisment__title">Обявление о мероприятиях</h1>
+        <h1 className="cardAdvertisment__title">{t('media')}</h1>
         {
         events &&
         events.map((event, index) => (

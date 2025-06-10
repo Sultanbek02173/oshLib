@@ -145,6 +145,7 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(switchingPage());
   }, [pathname, dispatch, navigate]);

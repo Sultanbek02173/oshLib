@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/store/reducers/auth/auth";
 import { eventHandler } from "../../shared/utils/eventHandlers";
 import { useTranslation } from "react-i18next";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const LoginForm = ({ onSubmit }) => {
   const { t } = useTranslation();
@@ -67,6 +68,8 @@ const LoginForm = ({ onSubmit }) => {
         {t("ForgotPass")}
       </Link>
       <button className="register__form-submit">{t("login")}</button>
+      <GoogleLoginButton />
+
       <div className="login__form-row">
         <p className="login__form-no">{t("regAcc")}</p>
         <Link to={"/register"} className="login__form-register">

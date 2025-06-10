@@ -26,30 +26,36 @@ export function DailyNews() {
 
   return (
     <div className="container DailyNews">
-      <div className="DailyNews__title">Дневные новости</div>
+      <div className="DailyNews__title">
+        <h2>{t('dayli')}</h2>
+      </div>
       <Swiper
         onSlideChange={handlePageChange}
         slidesPerView={1}
         spaceBetween={20}
         allowTouchMove={false}
       >
-        {
-        list && 
-        list.map((_, index) => (
-          <SwiperSlide key={index}>
-            <div className="DailyNews__grid">
-              {list.slice((currentPage * ITEMS_PER_PAGE) - ITEMS_PER_PAGE, (currentPage * ITEMS_PER_PAGE)).map(news => (
-                <CardDailyNews 
-                  key={news.id}
-                  id={news.id}
-                  img={news.image}
-                  title={news.title}
-                  desc={news.description}
-                />
-              ))}
-            </div>
-          </SwiperSlide>
-        ))}
+        {list &&
+          list.map((_, index) => (
+            <SwiperSlide key={index}>
+              <div className="DailyNews__grid">
+                {list
+                  .slice(
+                    currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE,
+                    currentPage * ITEMS_PER_PAGE
+                  )
+                  .map((news) => (
+                    <CardDailyNews
+                      key={news.id}
+                      id={news.id}
+                      img={news.image}
+                      title={news.title}
+                      desc={news.description}
+                    />
+                  ))}
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       <div className="DailyNews__pagination">
@@ -93,7 +99,7 @@ export function DailyNews() {
           onClick={() => setCurrentPage(totalPages)}
           disabled={currentPage === totalPages}
         >
-         {t("")} В конец
+          {t("")} В конец
         </button>
       </div>
     </div>

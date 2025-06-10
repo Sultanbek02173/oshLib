@@ -156,10 +156,16 @@ const authSlice = createSlice({
       })
       .addCase(loginWithGoogle.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.user = payload;
+        state.access = payload?.access || "";
+        state.refresh = payload?.refresh || "";
       })
-      .addCase(loginWithGoogle.rejected, (state) => {
+      .addCase(loginWithGoogle.rejected, (state, { payload }) => {
         state.loading = false;
+        if (payload) {
+          state.error = payload;
+        } else {
+          state.error = { detail: "Что-то пошло не так. Попробуйте снова." };
+        }
       })
 
       .addCase(SET_USER, (state, { payload }) => {

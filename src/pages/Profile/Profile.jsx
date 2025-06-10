@@ -1,30 +1,43 @@
 import { useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/store/reducers/auth/auth";
-import { getUser } from "../../app/store/reducers/auth/authThunks";
-import { ModalReg } from "../../entities";
+import { getUser, logoutUser } from "../../app/store/reducers/auth/authThunks";
+import { ReadBookModal } from "../../entities";
 import { CardBook } from "../../features";
+import { BASE_URL } from "../../shared/api/constants";
 import "./profile.scss";
 import profileAvatar from "./profileAvatar.png";
 import logo from "./profileLogo.svg";
-import { BASE_URL } from "../../shared/api/constants";
 
 const Profile = () => {
   const { userData: data, error } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(error);
+  // console.log(error);
+  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [book, setBook] = useState();
+  const [bookId, setBookId] = useState();
+  const [pageBook, setPageBook] = useState();
 
-  //   name: "Имя Фамилия",
-  //   email: "example@gmail.com",
-  //   avatar: "",
-  //   phone: "+996 555 55 55 55",
-  // };
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsOpen(!isOpen);
+  };
+
+  const openModal = (book, id, page) => {
+    setBook(book);
+    setOpen(!open);
+    setBookId(id);
+    if (!page) return;
+    setPageBook(page);
+  };
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -34,11 +47,7 @@ const Profile = () => {
     if (error?.code === "token_not_valid") {
       navigate("/login");
     }
-  }, [error, navigate]);
-
-  console.log(data);
-  
-  
+  }, [error, navigate, handleLogout]);
 
   return (
     <section className="container">
@@ -51,7 +60,11 @@ const Profile = () => {
           <div className="profile__data">
             <img
               className="profile__data-image"
-              src={data?.avatarka != null ? `${BASE_URL}${data.avatarka}` : profileAvatar}
+              src={
+                data?.avatarka != null
+                  ? `${BASE_URL}${data.avatarka}`
+                  : profileAvatar
+              }
               alt="avatar"
             />
 
@@ -77,25 +90,68 @@ const Profile = () => {
           </div>
 
           {data?.read_books?.length > 0 && (
-            <div className="profile__history">
+            <div className="profile__history" key={data.id}>
               <h3 className="profile__history-head">
                 История прочитанных книг:
               </h3>
               {data?.read_books.map((item) => (
                 <CardBook
                   key={item.id}
+                  id={item.id}
                   title={item.book_title}
                   description={item.description}
                   author={item.book_author}
                   openUrl={item.openUrl}
                   image={item.image_url}
+                  downloadUrl={item.download_url}
+                  openModal={openModal}
+                  base_url={BASE_URL}
+                  page={item.page}
+                  setPageBook={setPageBook}
                 />
               ))}
             </div>
           )}
         </div>
       </div>
-      <ModalReg isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      {isOpen && (
+        <div className="backDrop">
+          <div className="faUser">
+            <div className="cors">
+              <div className="cross" onClick={toggleModal}>
+                <IoMdClose />
+              </div>
+            </div>
+            <div className="warning">
+              <div className="getOut">
+                <h1>выйти из аккаунта</h1>
+              </div>
+              <div className="areSure">
+                <p>
+                  Вы уверены, что хотите выйти из своей учетной записи? После
+                  выхода вам нужно будет снова войти. Вы уверены?
+                </p>
+              </div>
+            </div>
+            <div className="confirmation">
+              <div className="cancel">
+                <button onClick={toggleModal}>Отмена</button>
+              </div>
+              <div className="YesExit">
+                <button onClick={handleLogout}>Да, выйти!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <ReadBookModal
+        bookId={bookId}
+        open={open}
+        setOpen={setOpen}
+        book={book}
+        page={pageBook}
+      />
+      {/* <ModalReg isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} /> */}
     </section>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from "react-i18next";
 import './professionalCategory.scss';
 
@@ -20,7 +19,11 @@ export const ProfessionalCategory = ({ title, description, links }) => {
           <h3 className="professional-category-title">{title}</h3>
           <p
             className="professional-category-text"
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: 
+              description.length > 300
+              ? description.substr(0, 300).trim() + "..."
+              : description,
+            }}
           ></p>
         </div>
         <div className="professional-category-button">

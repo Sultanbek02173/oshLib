@@ -2,9 +2,7 @@ import { useDispatch } from "react-redux";
 import { CardAfisha } from "../../../features";
 import { useNews } from "../../../app/store/reducers/news/newsSlice";
 import { useEffect } from "react";
-import {
-  getNewsEvents,
-} from "../../../app/store/reducers/news/newsThunks";
+import { getNewsEvents } from "../../../app/store/reducers/news/newsThunks";
 import {
   getAfishaBanner,
   useAfisha,
@@ -20,14 +18,9 @@ export const AfishaEvents = () => {
     dispatch(getAfishaBanner());
   }, [dispatch]);
 
-  console.log(banner);
-  
-
   return (
     <div className="card-afisha container">
-        <h1 className="card-afisha__title main__title">
-  {banner.title_2}
-        </h1>
+      <h1 className="card-afisha__title main__title">{banner.title_2}</h1>
       <div className="card-afisha__list">
         {events.map((event, index) => (
           <CardAfisha

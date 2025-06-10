@@ -25,7 +25,7 @@
 
     &-img {
         margin-top: 20px;
-        max-width: 315px;
+        width: 315px;
         height: 334px;
         background: #105B60;
         padding: 10px;
@@ -34,6 +34,7 @@
         img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
     }
@@ -60,16 +61,17 @@
 
 
     &-img2 {
-        max-width: 315px;
+        width: 315px;
         margin-top: 20px;
         height: 334px;
         background: #105B60;
         padding: 10px;
         border-radius: 5px;
-
+        
         img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
     }

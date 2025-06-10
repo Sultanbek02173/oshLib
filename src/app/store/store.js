@@ -9,6 +9,7 @@ import aboutReducer from "./reducers/aboutSlice";
 import afishaSlice from "./reducers/afishaSlice";
 import authReducer from "./reducers/auth/auth";
 import {
+  loginWithGoogle,
   logoutUser,
   userLogin,
   userRegister,
@@ -30,7 +31,11 @@ import typeativityReducer from "./reducers/typeativitySlice";
 import visuallyReducer from "./reducers/visually";
 const localStorageMiddleware = createListenerMiddleware();
 localStorageMiddleware.startListening({
-  matcher: isAnyOf(userRegister.fulfilled, userLogin.fulfilled),
+  matcher: isAnyOf(
+    userRegister.fulfilled,
+    userLogin.fulfilled,
+    loginWithGoogle.fulfilled
+  ),
   effect: (action, listenerApi) => {
     const { user, login, access, refresh } = listenerApi.getState().auth;
 

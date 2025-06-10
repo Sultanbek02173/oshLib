@@ -9,7 +9,6 @@ export const CardAfisha = ({
   title,
   time,
   description,
-  tablet,
   link,
 }) => {
   const { t } = useTranslation();
@@ -29,30 +28,21 @@ export const CardAfisha = ({
           </h2>
           <p
             className="container-card__parent-content-right-description-default"
-            dangerouslySetInnerHTML={{
-              __html: tablet
-                ? description.substr(0, 120).trim() + "..."
-                : description,
-            }}
+            dangerouslySetInnerHTML={{ __html: description.length < 300 ? description : description.slice(0, 300).trim() + '...' }}
           ></p>
         </div>
       </div>
       <p
         className="container-card__parent-content-right-description-detail"
-        dangerouslySetInnerHTML={{
-          __html: description.substr(0, 110).trim() + "...",
-        }}
+        dangerouslySetInnerHTML={{ __html: description }}
       ></p>
       {link ? (
-        <a className="container-card__parent-btn" href={link} target="_blank">
-          {t("More")}{" "}
+        <a className="container-card__parent-btn" href={link} target="_blank" rel="noopener noreferrer">
+          {t("More")}
         </a>
       ) : (
-        <Link
-          className="container-card__parent-btn"
-          to={`/afisha-detail/${id}`}
-        >
-          {t("More")}{" "}
+        <Link className="container-card__parent-btn" to={`/afisha-detail/${id}`}>
+          {t("More")}
         </Link>
       )}
     </div>
@@ -65,11 +55,7 @@ CardAfisha.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  tablet: PropTypes.bool,
-};
-
-CardAfisha.defaultProps = {
-  tablet: false,
+  link: PropTypes.string,
 };
 
 export default CardAfisha;

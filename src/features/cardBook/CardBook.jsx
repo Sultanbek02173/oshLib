@@ -11,13 +11,22 @@ export const CardBook = ({
   downloadUrl,
   openModal,
   id,
+  base_url,
+  page,
+  setPageBook
 }) => {
   const { path } = useLocation();
   return (
     <div className="cardBook">
       <div className="desktop_view">
         <div className="cardBook_img">
-          <img src={image} alt="" />
+          {
+            base_url ? (
+              <img src={`${base_url}${image}`} alt="" />
+            ) : (
+              <img src={image} alt="" />
+            )
+          }
         </div>
         <div className="cardBook_text">
           <h2 className="cardBook_text_name">{title}</h2>
@@ -27,10 +36,11 @@ export const CardBook = ({
           </div>
         </div>
         <div className="cardBook_btn">
-          {openUrl && (
+          {downloadUrl && (
             <button
               onClick={() => {
-                openModal(downloadUrl, id);
+                base_url ? openModal(`${base_url}${downloadUrl.slice(1)}`, id, page): 
+                openModal(downloadUrl, id, page);
               }}
               className="cardBook_btn_read"
             >
@@ -50,7 +60,13 @@ export const CardBook = ({
       <div className="mobile_view">
         <div className="cardBook_top">
           <div className="cardBook_img">
-            <img src={image} alt="" />
+            {
+              base_url ? (
+                <img src={`${base_url}${image}`} alt="" />
+              ) : (
+                <img src={image} alt="" />
+              )
+            }
           </div>
 
           <div className="cardBook_text">
@@ -69,10 +85,11 @@ export const CardBook = ({
             </React.Fragment>
           )}
 
-          {openUrl && (
+          {downloadUrl && (
             <button
               onClick={() => {
-                openModal(downloadUrl);
+                base_url ? openModal(`${base_url}${downloadUrl.slice(1)}`, page) : 
+                openModal(downloadUrl, id, page);
               }}
               className="cardBook_btn_read"
             >

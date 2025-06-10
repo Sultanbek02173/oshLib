@@ -57,6 +57,7 @@ const RegisterForm = ({ onSubmit }) => {
 
   return (
     <form className="register__form" onSubmit={onFormSubmit}>
+      {error?.detail && <p className="register__form-error">{error.detail}</p>}
       <div className="register__form-row">
         <div>
           {error?.full_name && !state.full_name ? (

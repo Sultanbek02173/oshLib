@@ -1,5 +1,8 @@
-  import "./newsDeteilSection.scss";
+  import { useTranslation } from "react-i18next";
+import "./newsDeteilSection.scss";
+
   export const NewsDeteilSection = ({ item }) => {
+    const {t} = useTranslation();
     return (
       <div className="newDeteil">
         <div className="container">
@@ -9,7 +12,7 @@
               <img src={item?.dextral_image} alt="" />
             </div>
             <div className="newDeteil_group_text">
-              <h2>Описание</h2>
+              <h2>{t('Description')}</h2>
               <div className="newDeteil_group_text_description">
                 <p
                   dangerouslySetInnerHTML={{ __html: item?.description }}

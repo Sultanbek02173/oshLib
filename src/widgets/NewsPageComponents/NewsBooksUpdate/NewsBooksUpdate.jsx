@@ -4,11 +4,13 @@ import "./NewsBookUpdate.scss";
 import { useNews } from "../../../app/store/reducers/news/newsSlice";
 import { useEffect } from "react";
 import { getBooksArrivals } from "../../../app/store/reducers/news/newsThunks";
+import { useTranslation } from "react-i18next";
 
 export const NewsBooksUpdate = () => {
 
   const dispatch = useDispatch();
   const { arrivals } = useNews();
+  const {t} = useTranslation()
 
   useEffect(() => {
     dispatch(getBooksArrivals());
@@ -18,7 +20,7 @@ export const NewsBooksUpdate = () => {
     <div className="container">
       <div className="NewsBooksUpdate_list">
         <h2 className="NewsBooksUpdate_header main__title">
-          Обявление о поступление книг
+          {t('mediaBook')}
         </h2>
         {
           arrivals &&

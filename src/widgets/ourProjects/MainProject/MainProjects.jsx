@@ -9,7 +9,7 @@ export const MainProjects = () => {
   const { projects, loading, error } = useSelector((state) => state.project);
   const { data } = useSelector((state) => state.projectBanner);
 
-  useEffect(() => {
+  useEffect(() => {1
     dispatch(fetchProjects());
     dispatch(fetchProjectBanner());
 

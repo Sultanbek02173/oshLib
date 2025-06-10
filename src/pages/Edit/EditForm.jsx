@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/store/reducers/auth/auth";
 import { getCategory } from "../../app/store/reducers/auth/authThunks";
 import { eventHandler } from "../../shared/utils/eventHandlers";
@@ -19,16 +19,19 @@ const initialState = {
 
 const EditForm = ({ user = initialState, onSubmit }) => {
   const fileInputRef = React.useRef(null);
+  const [preview, setPreview] = useState(null);
   const dispatch = useDispatch();
-  const { category } = useAuth();
+  const { category, error } = useAuth();
   const { 0: state, 1: setState } = useState(user);
-
+  const navigate = useNavigate();
   const onChange = eventHandler(setState);
 
   const onFileChange = (e) => {
     const { name, files } = e.target;
-    if (files) {
-      setState((prev) => ({ ...prev, [name]: files[0] }));
+    if (files && files[0]) {
+      const file = files[0];
+      setState((prev) => ({ ...prev, [name]: file }));
+      setPreview(URL.createObjectURL(file));
     }
   };
 
@@ -54,23 +57,30 @@ const EditForm = ({ user = initialState, onSubmit }) => {
       fileInputRef.current.click();
     }
   };
-  const [state2, setState2] = useState({
-    avatarka: File | null,
-  });
 
   useEffect(() => {
     dispatch(getCategory());
+    // setState(user);
   }, []);
+  // console.log(state);
+
+  useEffect(() => {
+    if (error?.code === "token_not_valid") {
+      navigate("/login");
+    }
+  }, [error, navigate]);
   return (
     <form onSubmit={onFormSubmit}>
       <div className="profile__data profile__edit">
+        {/* <input type="file" onChange={onFileChange} name="avatarka" /> */}
         <>
           <img
             className="profile__data-image"
-            src={`${BASE_URL}${state?.avatarka}` || profileAvatar}
+            src={preview || `${BASE_URL}${state?.avatarka}` || profileAvatar}
             alt="avatar"
             onClick={handleDivClick}
           />
+
           <input
             type="file"
             style={{ display: "none" }}
@@ -112,6 +122,8 @@ const EditForm = ({ user = initialState, onSubmit }) => {
           </div>
         </div>
       </div>
+      <p className="profile__data-text profile__none">категория: </p>
+
       <select
         name="category"
         className="profile__data-input profile__select"
@@ -130,11 +142,12 @@ const EditForm = ({ user = initialState, onSubmit }) => {
           Сохранить Изменения
         </button>
         <Link
-          // onClick={toggleModal}
+          className="profile__actions-btn profile__actions-gray"
           to="/profile"
         >
-          <button className="profile__actions-btn profile__actions-gray" >Отменить</button>
-          
+          {/* <button className="profile__actions-link-btn profile__actions-gray"> */}
+          Отменить
+          {/* </button> */}
         </Link>
       </div>
     </form>

@@ -19,7 +19,7 @@
       padding: 2px;
       border-radius: 8px;
       display: flex;
-      max-width: 194px;
+      grid: 10px;
 
       button {
         border: none;
@@ -41,8 +41,6 @@
         color: white;
         background: transparent;
         padding: 15px;
-
-
       }
 
       &_allactive {
@@ -64,16 +62,11 @@
         color: #105B60;
         background-color: white;
         border-radius: 8px;
-        padding: 13px 0;
-        padding-left: 13px;
-        width: 100%;
-
+        padding: 13px;
       }
     }
 
-    &_btns {
-      width: 24%;
-    }
+
 
     &_inp {
       padding: 15px 16px;

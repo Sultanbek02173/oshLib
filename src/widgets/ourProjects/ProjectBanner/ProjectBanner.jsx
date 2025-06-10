@@ -14,17 +14,18 @@ export const ProjectBanner = () => {
   }, [dispatch]);
 
   if (!data) return null;
-  console.log(data);
-  data.img
-  return (
-    <section style={
-      window.innerWidth <= 576 && data?.image
-        ? {
-          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${data.image}) center/cover no-repeat`,
-        }
-        : {}
-    } className="projectBanner">
 
+  return (
+    <section
+      style={
+        window.innerWidth <= 576 && data?.image
+          ? {
+              background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${data.image}) center/cover no-repeat`,
+            }
+          : {}
+      }
+      className="projectBanner"
+    >
       <h1>{data?.title}</h1>
 
       <img className="projectbanner_img1" src={img} alt="Project" />

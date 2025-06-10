@@ -6,10 +6,12 @@ import { IoCloseSharp } from "react-icons/io5";
 import { CardBook } from '../../../features/cardBook/CardBook';
 import { fetchBookElectronic } from '../../../app/store/reducers/bookElectronic';
 import { ReadBookModal } from '../../../entities';
+import { useTranslation } from 'react-i18next';
 
 export const ElectronicSearch = () => {
     const dispatch = useDispatch();
     const { books } = useSelector(state => state.bookElectronic);
+    const { t } = useTranslation();
 
     const [authorFilter, setAuthorFilter] = useState('');
     const [titleFilter, setTitleFilter] = useState('');
@@ -21,16 +23,18 @@ export const ElectronicSearch = () => {
     const [book, setBook] = useState();
     const [bookId, setBookId] = useState();
 
-    const openModal = (book, id) => {
+    const toggleModal = () => setIsMenuOpen(!isMenuOpen);
+    const loadMoreCards = () => setVisibleCards(filteredCards.length);
+    const hideCards = () => setVisibleCards(5);
+
+    const openModal = (book, id, page) => {
         setBook(book);
         setOpen(!open);
         setBookId(id)
+        if (!page) return
+        setPageBook(page);
     }
 
-    useEffect(() => {
-        dispatch(fetchBookElectronic());
-    }, [dispatch]);
-    
     const popularityThreshold = 10;
 
     const filteredCards = books?.filter((card) => {
@@ -43,55 +47,52 @@ export const ElectronicSearch = () => {
         if (activeFilter === 'popular') {
             return matchesAuthor && matchesTitle && matchesKeyword && isPopular;
         }
-        
+
 
         return matchesAuthor && matchesTitle && matchesKeyword;
-    }) || [];    
+    }) || [];
 
-    const toggleModal = () => setIsMenuOpen(!isMenuOpen);
-    const loadMoreCards = () => setVisibleCards(filteredCards.length);
-    const hideCards = () => setVisibleCards(5);    
-    
+
+    useEffect(() => {
+        dispatch(fetchBookElectronic());
+    }, [dispatch]);
+
     return (
         <div className="electronicSearch container">
-            <h1 className="electronicSearch_title">электронный каталог</h1>
-
+            <h1 className="electronicSearch_title">{t("electronicSearch.title")}</h1>
             <div className="electronicSearch_filters">
-                <div className="electronicSearch_filters_btns">
-                    <div className="electronicSearch_filters_btn">
-                        <button
-                            className={activeFilter === 'all' ? "electronicSearch_filters_btn_allactive" : "electronicSearch_filters_btn_all"}
-                            onClick={() => setActiveFilter('all')}
-                        >
-                            Все
-                        </button>
-                        <button
-                            className={activeFilter === 'popular' ? "electronicSearch_filters_btn_popularActive" : "electronicSearch_filters_btn_popular"}
-                            onClick={() => setActiveFilter('popular')}
-                        >
-                            Популярные
-                        </button>
-                    </div>
+                <div className="electronicSearch_filters_btn">
+                    <button
+                        className={activeFilter === 'all' ? "electronicSearch_filters_btn_allactive" : "electronicSearch_filters_btn_all"}
+                        onClick={() => setActiveFilter('all')}
+                    >
+                        {t("electronicSearch.button_all")}
+                    </button>
+                    <button
+                        className={activeFilter === 'popular' ? "electronicSearch_filters_btn_popularActive" : "electronicSearch_filters_btn_popular"}
+                        onClick={() => setActiveFilter('popular')}
+                    >
+                        {t("electronicSearch.button_popular")}
+                    </button>
                 </div>
-
                 <input
                     className="electronicSearch_filters_inp"
                     type="text"
-                    placeholder="Автор"
+                    placeholder={t('author')}
                     value={authorFilter}
                     onChange={(e) => setAuthorFilter(e.target.value)}
                 />
                 <input
                     className="electronicSearch_filters_inp"
                     type="text"
-                    placeholder="Название документа"
+                    placeholder={t('title')}
                     value={titleFilter}
                     onChange={(e) => setTitleFilter(e.target.value)}
                 />
                 <input
                     className="electronicSearch_filters_inp"
                     type="text"
-                    placeholder="Ключевое слово"
+                    placeholder={t('word2')}
                     value={keywordFilter}
                     onChange={(e) => setKeywordFilter(e.target.value)}
                 />
@@ -109,7 +110,7 @@ export const ElectronicSearch = () => {
                         <button onClick={toggleModal}>
                             <IoCloseSharp />
                         </button>
-                        <h2 className="modal_content-title">Расширенный поиск</h2>
+                        <h2 className="modal_content-title">{t("electronicSearch.modal_title")}</h2>
                         <input
                             className="modal_content-inputs"
                             type="text"
@@ -152,18 +153,18 @@ export const ElectronicSearch = () => {
                 <div className="electronicSearch_button">
                     {visibleCards < filteredCards.length && (
                         <button className="electronicSearch_button-more" onClick={loadMoreCards}>
-                            Ещё
+                            {t("electronicSearch.button_more")}
                         </button>
                     )}
                     {visibleCards > 5 && (
                         <button className="electronicSearch_button-more" onClick={hideCards}>
-                            Скрыть
+                            {t("electronicSearch.button_hide")}
                         </button>
                     )}
                 </div>
             </div>
 
-            <ReadBookModal bookId={bookId} open={open} setOpen={setOpen} book={book}/>
+            <ReadBookModal bookId={bookId} open={open} setOpen={setOpen} book={book} />
         </div>
     );
 };

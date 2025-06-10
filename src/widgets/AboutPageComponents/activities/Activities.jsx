@@ -28,7 +28,7 @@ export const Activities = () => {
                                         ? card.description.slice(0, 155).trim() + '...'
                                         : card.description
                                 }}></p>
-                            <a href={card.link} target="_blank" rel="noopener noreferrer" className='activities-container-cards-card-button'>Подробнее</a>
+                            <a href={card.link} target="_blank" rel="noopener noreferrer" className='activities-container-cards-card-button'>{t('More')}</a>
                         </div>
                     ))
                 }

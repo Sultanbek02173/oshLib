@@ -1,29 +1,30 @@
-import { useEffect, useState } from 'react';
-import './HomeRating.scss';
-import { useDispatch } from 'react-redux';
-import { useHome } from '../../../app/store/reducers/home/homeSlice';
+import { useEffect, useState } from "react";
+import "./HomeRating.scss";
+import { useDispatch } from "react-redux";
+import { useHome } from "../../../app/store/reducers/home/homeSlice";
 import {
   getBooksRating,
   getHomeTitles,
   getReadingRating,
-} from '../../../app/store/reducers/home/homeThunks';
-import { CardRating } from '../../../features';
+} from "../../../app/store/reducers/home/homeThunks";
+import { CardRating } from "../../../features";
 
 export function HomeRating() {
   const [activePersonIdx, setActivePersonIdx] = useState(null);
   const [activeBookIdx, setActiveBookIdx] = useState(null);
 
   const dispatch = useDispatch();
-  const { readerRatings: readers, booksRatings: books, ratingTitles: titles } = useHome();
+  const {
+    readerRatings: readers,
+    booksRatings: books,
+    ratingTitles: titles,
+  } = useHome();
 
   useEffect(() => {
     dispatch(getReadingRating());
     dispatch(getBooksRating());
-    dispatch(getHomeTitles())
+    dispatch(getHomeTitles());
   }, [dispatch]);
-   
-  console.log(books)
-  console.log(titles)
 
   useEffect(() => {
     if (readers?.length) {
@@ -43,7 +44,7 @@ export function HomeRating() {
     <main className="container">
       <div className="rating__home">
         <div>
-          <h2 className='main__title'>{titles[0]?.readers}</h2>
+          <h2 className="main__title">{titles[0]?.readers}</h2>
           <section className="rating__home__content">
             {readers?.slice(0, 3).map((item, i) => (
               <CardRating
@@ -57,7 +58,7 @@ export function HomeRating() {
           </section>
         </div>
         <div>
-          <h2 className='main__title'>{titles[0]?.books}</h2>
+          <h2 className="main__title">{titles[0]?.books}</h2>
           <section className="rating__home__content">
             {books?.slice(0, 3).map((item, i) => (
               <CardRating

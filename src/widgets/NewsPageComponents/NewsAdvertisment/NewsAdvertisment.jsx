@@ -4,11 +4,13 @@ import { useNews } from "../../../app/store/reducers/news/newsSlice";
 import { getNewsAboutCmi } from "../../../app/store/reducers/news/newsThunks";
 import { CardAfisha } from "../../../features/";
 import "./newsAdvertisment.scss";
+import { useTranslation } from "react-i18next";
 
 export const NewsAdvertisment = () => {
 
   const dispatch = useDispatch();
   const { listAboutCmi } = useNews();
+  const {t} = useTranslation();
 
   useEffect(() => {
     dispatch(getNewsAboutCmi());
@@ -16,7 +18,7 @@ export const NewsAdvertisment = () => {
 
   return (
     <div className="cardAdvertisment container">
-      <h1 className="cardAdvertisment__title">сми о нас</h1>
+      <h1 className="cardAdvertisment__title">{t('SMI')}</h1>
       {
         listAboutCmi &&
       listAboutCmi.map((event, index) => (

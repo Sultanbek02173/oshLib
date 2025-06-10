@@ -11,6 +11,8 @@ export const AboutBanner = () => {
         dispatch(fetchAboutData());
     }, [dispatch]);
 
+    
+
     return (
         <div className='banner-container container'>
             <div className='banner-container-headline'>
@@ -18,12 +20,16 @@ export const AboutBanner = () => {
                     <h1 className='banner-container-headline-parts-first-title'>
                         {data?.title_1}
                         <span className='banner-container-headline-parts-second-title'>
-                            {" "}{data?.title_2}
+                            {data?.title_2}
                         </span>
                     </h1>
                     <p
                         className='banner-container-headline-parts-description'
-                        dangerouslySetInnerHTML={{ __html: data?.description }}
+                        dangerouslySetInnerHTML={{ __html: 
+                            data?.description.length > 370 ?
+                            data?.description.slice(0, 370) + '...' :
+                            data?.description
+                         }}
                     ></p>
                 </div>
             </div>
